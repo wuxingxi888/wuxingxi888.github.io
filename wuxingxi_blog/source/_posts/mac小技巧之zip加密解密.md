@@ -4,7 +4,7 @@ date: 2021-10-14 11:21:31
 tags: Mac linux
 categories: 
 top_img:
-cover: "![Linux](mac小技巧之zip加密解密/Linux.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/Linux.jpeg"
 ---
 
 {% note simple %}

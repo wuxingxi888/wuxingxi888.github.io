@@ -4,7 +4,7 @@ date: 2020-08-17 12:07:31
 tags: centos vue
 categories: centos vue
 top_img:
-cover: "![centos](CentOS-6-10部署vue项目/centos.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/centos.jpeg"
 ---
 
 #### 打包 上传

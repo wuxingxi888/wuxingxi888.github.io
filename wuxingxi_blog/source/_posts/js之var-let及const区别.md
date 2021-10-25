@@ -4,7 +4,7 @@ date: 2021-03-26 14:04:27
 tags: javascript
 categories: javascript
 top_img:
-cover: "![javascript](js之var-let及const区别/javascript.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---
 
 对于这个问题，我们应该先来了解提升（hoisting）这个概念

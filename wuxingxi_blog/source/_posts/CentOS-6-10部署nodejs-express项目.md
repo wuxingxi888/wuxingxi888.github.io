@@ -4,7 +4,7 @@ date: 2020-08-20 12:04:47
 tags: centos express
 categories: centos express
 top_img:
-cover: "![centos](CentOS-6-10部署nodejs-express项目/centos.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/centos.jpeg"
 ---
 
 

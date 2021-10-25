@@ -4,7 +4,7 @@ date: 2021-03-26 12:17:10
 tags: javascript
 categories: javascript
 top_img:
-cover: "![javascript](js之闭包/javascript.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---
 
 ### 闭包

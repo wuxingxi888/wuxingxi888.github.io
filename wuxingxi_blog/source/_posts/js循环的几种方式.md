@@ -4,7 +4,7 @@ date: 2021-05-12 14:08:16
 tags: JavaScript
 categories: JavaScript
 top_img:
-cover: "![JavaScript](js循环的几种方式/JavaScript.jpg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/es6.jpeg"
 ---
 
 #### 1.普通的for

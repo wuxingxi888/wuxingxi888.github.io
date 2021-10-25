@@ -4,10 +4,10 @@ date: 2021-10-14 11:56:46
 tags: mysql
 categories: mysql
 top_img: 
-cover: "![mysql](mysql常用操作/mysql.jpeg)"
+cover: '![mysql-4288725](mysql常用操作/mysql-4288725.jpeg)'
 ---
 
-
+![mysql](mysql常用操作/mysql-4288725.jpeg)
 
 1. ```
    

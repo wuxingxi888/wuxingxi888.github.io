@@ -4,7 +4,7 @@ date: 2020-04-07 14:29:30
 tags: websocket vue
 categories: vue
 top_img: 
-cover: "![vue](vue中使用websocket正确的方式/vue.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/vue.jpeg"
 ---
 
 ```vue

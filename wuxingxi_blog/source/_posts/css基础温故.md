@@ -4,7 +4,7 @@ date: 2021-10-14 11:44:15
 tags: css
 categories: css
 top_img:
-cover: "![css](css基础温故/css.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/css.jpeg"
 ---
 
 ### 三栏布局

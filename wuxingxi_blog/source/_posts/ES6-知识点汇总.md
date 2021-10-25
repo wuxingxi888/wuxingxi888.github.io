@@ -4,7 +4,7 @@ date: 2020-11-30 12:09:22
 tags: es6
 categories: es6 
 top_img:
-cover: "![es6](ES6-知识点汇总/es6.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/es6.jpeg"
 ---
 
 

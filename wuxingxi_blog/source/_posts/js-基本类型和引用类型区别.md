@@ -4,7 +4,7 @@ date: 2021-03-26 14:00:37
 tags: javascript
 categories: javascript
 top_img:
-cover: "![javascript](js-基本类型和引用类型区别/javascript.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---
 
 ## 一、JavaScript全部数据类型

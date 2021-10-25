@@ -4,7 +4,7 @@ date: 2020-05-09 11:36:00
 tags: element vue
 categories: vue
 top_img:
-cover: "![elementUI](element-ui之dialog组件封装/elementUI.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/elementUI.jpeg"
 ---
 
 ```html

@@ -4,7 +4,7 @@ date: 2020-05-09 11:02:54
 tags: JavaScript websocket
 categories: websocket
 top_img:
-cover: "![websocket](js封装websocket/websocket.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---
 
 {% note 'fab fa-cc-visa' flat %}

@@ -4,8 +4,10 @@ date: 2021-05-24 14:13:03
 tags: vue android iOS
 categories: native
 top_img:
-cover: "![vue](原生（Android-iOS）webview与js（vue）交互/vue.jpeg)"
+cover: "![vue-4288067](原生（Android-iOS）webview与js（vue）交互/vue-4288067.jpeg)"
 ---
+
+![vue](原生（Android-iOS）webview与js（vue）交互/vue-4288067.jpeg)
 
 # 1.Vue和原生（ios和安卓）的交互（第一种方法）
 
@@ -194,3 +196,4 @@ tbsWebView.addJavascriptInterface(new JsJavaBridge(this, tbsWebView), "$App");
 这里将类 `JsJavaBridge` 在 JS 中映射为了 `$App`，所以在 Vue 中可以这样调用 `$App.showToast("哈哈，我是js调用的")`。
 
 以上就是 原生 与 JS（vue） 的互相调用。
+

@@ -4,7 +4,7 @@ date: 2021-03-24 12:13:10
 tags: javascript
 categories: javascript
 top_img:
-cover: "![javascript](js深浅拷贝/javascript.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---
 
 # js深浅拷贝解析

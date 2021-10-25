@@ -4,7 +4,7 @@ date: 2021-03-26 14:02:25
 tags: javascript
 categories: javascript
 top_img:
-cover: "![javascript](js判断数据类型方法/javascript.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---
 
 判断js中的数据类型有一下几种方法：typeof、instanceof、 constructor、 prototype、 $.type()/jquery.type(),接下来主要比较一下这几种方法的异同。

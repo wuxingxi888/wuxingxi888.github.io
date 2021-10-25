@@ -4,7 +4,7 @@ date: 2020-07-31 11:58:46
 tags: mysql
 categories: mysql
 top_img: 
-cover: "![mysql](mysql根据查询多个值返回结果/mysql.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/mysql.jpeg"
 ---
 
 ##### 背景

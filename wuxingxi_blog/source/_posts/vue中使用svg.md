@@ -4,7 +4,7 @@ date: 2021-05-12 14:10:35
 tags: vue
 categories: vue
 top_img:
-cover: "![vue](vue中使用svg/vue.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/vue.jpeg"
 ---
 
 先安装svg-sprite-loader

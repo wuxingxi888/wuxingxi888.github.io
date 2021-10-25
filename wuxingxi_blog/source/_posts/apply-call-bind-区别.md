@@ -4,7 +4,7 @@ date: 2021-03-25 13:57:09
 tags: javascript
 categories: javascript
 top_img:
-cover: "![javascript](apply-call-bind-区别/javascript.jpeg)"
+cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---
 
 ## this 的指向
