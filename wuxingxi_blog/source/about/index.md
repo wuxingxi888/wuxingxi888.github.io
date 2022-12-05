@@ -20,6 +20,6 @@ Address: wuhan
 
 Github: https://github.com/wuxingxi888
 
-Blog: http://wuxingxi.xyz/
+Blog: http://wuxingxi.top/
 
 {% endnote %}
