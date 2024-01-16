@@ -7,9 +7,7 @@ top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---
 
-{% note 'fab fa-cc-visa' flat %}
-1.创建websocket.js
-{% endnote %}
+#### 1.创建websocket.js
 
 ```javascript
 const WSS_URL = `wss://wss.xxxx.com/ws?appid=xxx`
@@ -81,11 +79,7 @@ export function sendPing() {
 }
 ```
 
-
-
-{% note 'fab fa-cc-visa' flat %}
-2.调用方式
-{% endnote %}
+#### 2.调用方式
 
 ```javascript
 import { createSocket, sendWSPush } from './api/websocket'
