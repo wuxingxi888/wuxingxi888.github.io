@@ -35,7 +35,7 @@ install rollup-plugin-external-globals -D
 
 1. 允许设置延迟加载
 2. rollupOptions需要设置external
-3. 具体的CDN链接根据自己需要去官网或是CDN网站查询，**cdn网站：[cdnjs.com/](https://link.juejin.cn/?target=https%3A%2F%2Fcdnjs.com%2F)**
+3. 具体的CDN链接根据自己需要去官网或是CDN网站查询，**cdn网站：[cdnjs.com/](https://cdnjs.com/)**
 
 ```
 import externalGlobals from 'rollup-plugin-external-globals'
@@ -173,10 +173,10 @@ export default defineConfig(({ mode }) => {
 
 
 
-#### 修改你的 `public/index.html` 文件，添加占位符：
+#### 修改你的 index.html 文件，添加占位符：
 
 ```html
-<!-- public/index.html -->
+<!-- index.html -->
 
 <!DOCTYPE html>
 <html lang="en">
