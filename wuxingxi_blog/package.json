@@ -1,5 +1,5 @@
 {
-  "name": "hexo-site",
+  "name": "wxx-blog",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,12 +9,12 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "7.0.0"
+    "version": "6.3.0"
   },
   "dependencies": {
     "aplayer": "^1.10.1",
-    "hexo": "^7.0.0",
-    "hexo-asset-image": "^1.0.0",
+    "hexo": "^6.0.0",
+    "hexo-asset-img": "^1.1.0",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
@@ -28,8 +28,8 @@
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
     "hexo-tag-aplayer": "^3.0.4",
-    "hexo-theme-butterfly": "^4.12.0",
-    "hexo-theme-next": "^8.19.1",
-    "hexo-wordcount": "^6.0.1"
+    "hexo-theme-butterfly": "^4.13.0",
+    "hexo-wordcount": "^6.0.1",
+    "htmlparser2": "^9.1.0"
   }
 }
