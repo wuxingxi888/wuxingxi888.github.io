@@ -44,7 +44,7 @@ nvm use
 
 ​	如果 .nvmrc 中的 node 版本已安装，当前终端窗口的 node 将自动切换为该版本
 
-![ea59afc78efd454704bb2c086bf1c206](./工程化之-nvmrc-文件使用详解/ea59afc78efd454704bb2c086bf1c206.png)
+![ea59afc78efd454704bb2c086bf1c206](工程化之-nvmrc-文件使用详解/ea59afc78efd454704bb2c086bf1c206.png)
 
 ​	如果 .nvmrc 中的 node 版本没有安装，将会出现以下提示
 
@@ -62,7 +62,7 @@ You need to run `nvm install` to install and use the node version specified in `
 nvm install
 ```
 
-![98c9dc94fd9be69fdb08fa08c43bfc68](./工程化之-nvmrc-文件使用详解/98c9dc94fd9be69fdb08fa08c43bfc68.png)
+![98c9dc94fd9be69fdb08fa08c43bfc68](工程化之-nvmrc-文件使用详解/98c9dc94fd9be69fdb08fa08c43bfc68.png)
 
 
 5. ## 终端自动切换版本
@@ -105,4 +105,4 @@ source ~/.zshrc
 
 ​	效果如下所示，进入一个含有 .nvmrc 文件的目录会自动切换当前窗口的 node 版本，退出目录时自动切换为默认 node 版本
 
-![2c411990a35fbb885bafe0b5c8c6019b](./工程化之-nvmrc-文件使用详解/2c411990a35fbb885bafe0b5c8c6019b.png)
+![2c411990a35fbb885bafe0b5c8c6019b](工程化之-nvmrc-文件使用详解/2c411990a35fbb885bafe0b5c8c6019b.png)
