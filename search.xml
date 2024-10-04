@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Github图床搭建，结合Picgo与jsdelivr的免费cdn加速</title>
+      <link href="/2024/10/04/Github%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA%EF%BC%8C%E7%BB%93%E5%90%88Picgo%E4%B8%8Ejsdelivr%E7%9A%84%E5%85%8D%E8%B4%B9cdn%E5%8A%A0%E9%80%9F/"/>
+      <url>/2024/10/04/Github%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA%EF%BC%8C%E7%BB%93%E5%90%88Picgo%E4%B8%8Ejsdelivr%E7%9A%84%E5%85%8D%E8%B4%B9cdn%E5%8A%A0%E9%80%9F/</url>
+      
+        <content type="html"><![CDATA[<p>话不多说 ，直接开整！</p><p>jsdelivr加速地址：</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//cdn.jsdelivr.net/gh/Github用户名/仓库名@master</span></span><br><span class="line"><span class="attr">https</span>:<span class="comment">//fastly.jsdelivr.net/gh/Github用户名/仓库名@master</span></span><br></pre></td></tr></table></figure><p>注意：这两个地址偶尔不好使，自己看哪个好用用哪个。</p><ol><li>创建一个GitHub仓库：</li></ol><p>​进入你的GitHub首页，在右上角你会找到一个➕，在下拉菜单中选取”New repository”选项</p><p>​<style>.fnmrwkztmgxu{}</style><img src="/2024/10/04/Github%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA%EF%BC%8C%E7%BB%93%E5%90%88Picgo%E4%B8%8Ejsdelivr%E7%9A%84%E5%85%8D%E8%B4%B9cdn%E5%8A%A0%E9%80%9F/2954941-20240121181614985-453729137.png" class="fnmrwkztmgxu" alt="2954941-20240121181614985-453729137"></p><p>​按需填写相关信息，创建仓库：</p><img src="/2024/10/04/Github%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA%EF%BC%8C%E7%BB%93%E5%90%88Picgo%E4%B8%8Ejsdelivr%E7%9A%84%E5%85%8D%E8%B4%B9cdn%E5%8A%A0%E9%80%9F/2954941-20240121182042286-876479529.png" class="" title="2954941-20240121182042286-876479529"><ol start="2"><li>获取一个GitHub的token用以picgo的身份验证，在你的GitHub主页，右上角点击你的头像，在展示的抽屉中选择”Settings”</li></ol><img src="/2024/10/04/Github%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA%EF%BC%8C%E7%BB%93%E5%90%88Picgo%E4%B8%8Ejsdelivr%E7%9A%84%E5%85%8D%E8%B4%B9cdn%E5%8A%A0%E9%80%9F/2954941-20240121182419954-1790036747.png" class="" title="2954941-20240121182419954-1790036747"><p>然后把左侧选项框滑到最下面，选择”Developer settings”，再从左侧点击”Personal access token”下拉展开，选择”Tokens(classic)”，然后再点击右上角的”Generate new token”，选择”Generate new token(classic)”<img src="/2024/10/04/Github%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA%EF%BC%8C%E7%BB%93%E5%90%88Picgo%E4%B8%8Ejsdelivr%E7%9A%84%E5%85%8D%E8%B4%B9cdn%E5%8A%A0%E9%80%9F/2954941-20240121182739149-198663654.png" class="" title="2954941-20240121182739149-198663654"></p><p>按步骤填写信息后，滑倒最下面，创建token，然后复制token值（必须立马复制，否则之后将无法再看到这个token的值）</p><img src="/2024/10/04/Github%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA%EF%BC%8C%E7%BB%93%E5%90%88Picgo%E4%B8%8Ejsdelivr%E7%9A%84%E5%85%8D%E8%B4%B9cdn%E5%8A%A0%E9%80%9F/2954941-20240121183210414-1266914777.png" class="" title="2954941-20240121183210414-1266914777"><img src="/2024/10/04/Github%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA%EF%BC%8C%E7%BB%93%E5%90%88Picgo%E4%B8%8Ejsdelivr%E7%9A%84%E5%85%8D%E8%B4%B9cdn%E5%8A%A0%E9%80%9F/2954941-20240121183342410-1581236573.png" class="" title="2954941-20240121183342410-1581236573"><ol start="3"><li>配置Picgo（下载安装很简单，<a href="https://github.com/Molunerfinn/PicGo/releases">官网</a> 直接下载安装就行），点击左侧的图床设置，选择github，再点击编辑。</li></ol><img src="/2024/10/04/Github%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA%EF%BC%8C%E7%BB%93%E5%90%88Picgo%E4%B8%8Ejsdelivr%E7%9A%84%E5%85%8D%E8%B4%B9cdn%E5%8A%A0%E9%80%9F/2954941-20240121183441422-439027951.png" class="" title="2954941-20240121183441422-439027951"><p>按要求填写内容，点击确定，即可完成配置，可以开始上传图片：</p><p>参考：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">设定仓库名（参考）：MorningM/img-bed</span><br><span class="line">设定自定义域名（参考）：https://cdn.jsdelivr.net/gh/MorningM/img-bed@master</span><br></pre></td></tr></table></figure><img src="/2024/10/04/Github%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA%EF%BC%8C%E7%BB%93%E5%90%88Picgo%E4%B8%8Ejsdelivr%E7%9A%84%E5%85%8D%E8%B4%B9cdn%E5%8A%A0%E9%80%9F/2954941-20240121183756312-119349484.png" class="" title="2954941-20240121183756312-119349484"><p>到此结束，快去试试吧！</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> GitHub jsdelivr </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>为什么vue template中不用加.value?</title>
       <link href="/2024/10/02/%E4%B8%BA%E4%BB%80%E4%B9%88vue-template%E4%B8%AD%E4%B8%8D%E7%94%A8%E5%8A%A0-value/"/>
       <url>/2024/10/02/%E4%B8%BA%E4%BB%80%E4%B9%88vue-template%E4%B8%AD%E4%B8%8D%E7%94%A8%E5%8A%A0-value/</url>
