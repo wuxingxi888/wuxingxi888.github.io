@@ -1,8 +1,8 @@
 ---
 title: ES6模块
 date: 2021-03-30 14:06:20
-tags: es6
-categories: es6
+tags: es6 前端基础
+categories: 前端基础
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/es6.jpeg"
 ---

@@ -1,8 +1,8 @@
 ---
 title: js 基本类型和引用类型区别
 date: 2021-03-26 14:00:37
-tags: javascript
-categories: javascript
+tags: javascript 前端基础
+categories: 前端基础
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---

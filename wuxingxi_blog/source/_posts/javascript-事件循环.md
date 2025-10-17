@@ -1,8 +1,8 @@
 ---
 title: javascript 事件循环
 date: 2022-10-09 11:39:09
-tags: javascript
-categories: javascript
+tags: javascript 前端基础
+categories: 前端基础
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/eventloop.webp"
 ---

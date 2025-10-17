@@ -1,8 +1,8 @@
 ---
 title: CentOS 6.10部署nodejs express项目
 date: 2020-08-20 12:04:47
-tags: centos express
-categories: centos express
+tags: centos express 后端技术
+categories: 后端技术
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/centos.jpeg"
 ---

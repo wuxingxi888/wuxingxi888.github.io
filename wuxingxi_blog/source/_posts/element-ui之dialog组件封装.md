@@ -1,8 +1,8 @@
 ---
 title: element-ui之dialog组件封装
 date: 2020-05-09 11:36:00
-tags: element vue
-categories: vue
+tags: element vue 前端框架
+categories: 前端框架
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/elementUI.jpeg"
 ---

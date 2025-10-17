@@ -1,8 +1,8 @@
 ---
 title: vue-cli 3/4兼容Android低版本白屏问题
 date: 2021-10-29 16:01:49
-tags: vue android
-categories: vue android
+tags: vue android 前端框架
+categories: 前端框架
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/vue.jpeg"
 ---

@@ -1,8 +1,8 @@
 ---
 title: Monorepo与pnpm
-date: 2024-08-11 16:59:45
-tags: pnpm Monorepo
-categories: pnpm Monorepo 架构
+date: 2023-08-13 08:59:45
+tags: pnpm Monorepo engineering tooling 工程化
+categories: 工程化
 top_img:
 cover: https://s2.loli.net/2024/09/11/Af2v9R8nbDp6G7z.jpg
 ---

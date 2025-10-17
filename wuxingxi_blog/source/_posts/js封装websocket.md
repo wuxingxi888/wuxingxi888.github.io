@@ -1,8 +1,8 @@
 ---
 title: js封装websocket
 date: 2020-05-09 11:02:54
-tags: JavaScript websocket
-categories: websocket
+tags: JavaScript websocket 前端基础
+categories: 前端基础
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---

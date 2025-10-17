@@ -1,8 +1,8 @@
 ---
 title: css基础温故
 date: 2021-10-14 11:44:15
-tags: css
-categories: css
+tags: css 前端基础
+categories: 前端基础
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/css.jpeg"
 ---

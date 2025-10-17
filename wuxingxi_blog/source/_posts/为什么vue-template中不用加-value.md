@@ -1,8 +1,8 @@
 ---
 title: 为什么vue template中不用加.value?
-date: 2024-10-02 00:16:04
-tags: vue3
-categories: vue
+date: 2023-10-01 16:16:04
+tags: vue3 前端框架
+categories: 前端框架
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/vue.jpeg"
 ---

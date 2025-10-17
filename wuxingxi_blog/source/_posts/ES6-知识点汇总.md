@@ -1,8 +1,8 @@
 ---
 title: ES6 知识点汇总
 date: 2020-11-30 12:09:22
-tags: es6
-categories: es6 
+tags: es6 前端基础
+categories: 前端基础
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/es6.jpeg"
 ---

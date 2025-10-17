@@ -1,8 +1,8 @@
 ---
 title: vue中使用svg
 date: 2021-05-12 14:10:35
-tags: vue
-categories: vue
+tags: vue 前端框架
+categories: 前端框架
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/vue.jpeg"
 ---

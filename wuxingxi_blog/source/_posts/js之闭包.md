@@ -1,8 +1,8 @@
 ---
 title: js之闭包
 date: 2021-03-26 12:17:10
-tags: javascript
-categories: javascript
+tags: javascript 前端基础
+categories: 前端基础
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---

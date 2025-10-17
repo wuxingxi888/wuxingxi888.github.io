@@ -1,8 +1,8 @@
 ---
 title: web部署成功，通知用户刷新界面 实践
-date: 2024-01-16 19:41:08
-tags: web javascript
-categories: web javascript
+date: 2024-01-17 11:41:08
+tags: web javascript 前端基础
+categories: 前端基础
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---

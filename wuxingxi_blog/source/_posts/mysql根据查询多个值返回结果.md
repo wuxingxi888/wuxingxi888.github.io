@@ -1,8 +1,8 @@
 ---
 title: mysql根据查询多个值返回结果
 date: 2020-07-31 11:58:46
-tags: mysql
-categories: mysql
+tags: mysql 后端技术
+categories: 后端技术
 top_img: 
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/mysql.jpeg"
 ---

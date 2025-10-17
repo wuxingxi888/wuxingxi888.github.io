@@ -1,8 +1,8 @@
 ---
 title: js判断数据类型方法
 date: 2021-03-26 14:02:25
-tags: javascript
-categories: javascript
+tags: javascript 前端基础
+categories: 前端基础
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/javascript.jpeg"
 ---

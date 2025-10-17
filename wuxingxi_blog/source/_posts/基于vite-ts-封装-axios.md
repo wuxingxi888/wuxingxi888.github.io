@@ -1,8 +1,8 @@
 ---
 title: 基于vite ts 封装 axios
 date: 2022-12-05 11:10:52
-tags: vite typescript
-categories: axios 网络请求
+tags: vite typescript 前端框架
+categories: 前端框架
 top_img:
 cover: https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/axios.jpeg
 ---

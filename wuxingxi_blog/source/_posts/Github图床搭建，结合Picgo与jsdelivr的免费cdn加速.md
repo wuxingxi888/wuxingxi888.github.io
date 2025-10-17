@@ -1,9 +1,8 @@
 ---
 title: Github图床搭建，结合Picgo与jsdelivr的免费cdn加速
-date: 2024-10-04 23:05:22
-tags: GitHub jsdelivr
-categories: 
-top_img:
+date: 2023-10-04 15:05:22
+tags: GitHub jsdelivr engineering tooling 工程化
+categories: 工程化
 cover: https://cdn.jsdelivr.net/gh/wuxingxi888/CDN_IMG_BED/jsdelivr_gh.jpeg
 ---
 

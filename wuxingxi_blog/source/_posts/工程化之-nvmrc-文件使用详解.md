@@ -1,8 +1,8 @@
 ---
 title: 工程化之.nvmrc 文件使用详解
-date: 2024-09-02 17:39:42
-tags: nvm nodeJs
-categories: nvm nodeJs
+date: 2024-09-03 09:39:42
+tags: nvm nodeJs engineering tooling 工程化
+categories: 工程化
 top_img:
 cover: https://s2.loli.net/2024/09/26/aI7nC6Ke8mcbSp3.jpg
 ---

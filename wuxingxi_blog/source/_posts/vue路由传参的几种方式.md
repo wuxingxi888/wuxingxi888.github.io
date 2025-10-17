@@ -1,8 +1,8 @@
 ---
 title: vue路由传参的几种方式
 date: 2021-11-15 18:55:48
-tags: vue
-categories: vue
+tags: vue 前端框架
+categories: 前端框架
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/vue.jpeg"
 ---

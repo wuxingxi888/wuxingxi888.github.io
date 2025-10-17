@@ -1,8 +1,8 @@
 ---
 title: 使用sequelize-cli管理数据库
-date: 2024-05-28 17:05:33
-tags: sequelize sequelize-cli
-categories: sequelize sequelize-cli
+date: 2023-05-29 09:05:33
+tags: sequelize sequelize-cli 后端技术
+categories: 后端技术
 top_img: https://s2.loli.net/2024/05/28/T4tdHonXFhagsOz.jpg
 cover: https://s2.loli.net/2024/05/28/1I38WfVFyo7qpQP.jpg
 ---

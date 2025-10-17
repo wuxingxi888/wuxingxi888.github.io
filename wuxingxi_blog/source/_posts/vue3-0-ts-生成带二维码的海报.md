@@ -2,8 +2,8 @@
 
 title: vue3.0 + ts 生成带二维码的海报
 date: 2021-12-11 09:33:22
-tags: vue typescript
-categories: vue typescript
+tags: vue typescript 前端框架
+categories: 前端框架
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/vue.jpeg"
 ---

@@ -1,9 +1,8 @@
 ---
 title: mac小技巧之zip加密解密
 date: 2021-10-14 11:21:31
-tags: Mac linux
-categories: 
-top_img:
+tags: Mac linux 实用技巧
+categories: 实用技巧
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/Linux.jpeg"
 ---
 

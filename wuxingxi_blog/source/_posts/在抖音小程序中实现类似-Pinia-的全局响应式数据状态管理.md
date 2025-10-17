@@ -1,8 +1,8 @@
 ---
 title: 在抖音小程序中实现类似 Pinia 的全局响应式数据状态管理
-date: 2024-03-20 19:09:11
-tags: 抖音 小程序
-categories: 小程序
+date: 2023-03-25 11:09:11
+tags: 抖音 小程序 移动开发
+categories: 移动开发
 top_img:
 cover: "https://s2.loli.net/2024/03/20/WIJg8BhufdlQrKy.jpg"
 ---

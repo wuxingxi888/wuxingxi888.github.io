@@ -1,8 +1,8 @@
 ---
 title: vue-cli4之手撸webpack骨架屏插件
-date: 2024-01-19 16:01:05
-tags: vue vue-cli4 webpack
-categories: vue vue-cli4 webpack skeleton
+date: 2023-01-22 08:01:05
+tags: vue vue-cli4 webpack 前端框架
+categories: 前端框架
 top_img:
 cover: https://s2.loli.net/2024/01/17/BIXVTMKPUwecxbn.png
 ---

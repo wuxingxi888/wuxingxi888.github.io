@@ -1,8 +1,8 @@
 ---
 title: vue中使用websocket正确的方式
 date: 2020-04-07 14:29:30
-tags: websocket vue
-categories: vue
+tags: websocket vue 前端框架
+categories: 前端框架
 top_img: 
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/vue.jpeg"
 ---

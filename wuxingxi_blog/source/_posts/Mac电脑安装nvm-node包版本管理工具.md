@@ -1,8 +1,8 @@
 ---
 title: Mac电脑安装nvm(node包版本管理工具)
-date: 2024-08-20 16:28:47
-tags: nvm nodeJs
-categories: nvm nodeJs
+date: 2024-08-20 08:28:47
+tags: nvm nodeJs engineering tooling 工程化
+categories: 工程化
 top_img:
 cover: https://s2.loli.net/2024/09/26/aI7nC6Ke8mcbSp3.jpg
 ---

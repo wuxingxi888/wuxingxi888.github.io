@@ -1,8 +1,8 @@
 ---
 title: 构建发布一个npm
-date: 2022-09-29 17:28:54
-tags: npm
-categories: typescript 
+date: 2023-09-29 17:28:54
+tags: npm engineering tooling 工程化
+categories: 工程化
 top_img:
 cover: https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/npm.jpeg
 ---

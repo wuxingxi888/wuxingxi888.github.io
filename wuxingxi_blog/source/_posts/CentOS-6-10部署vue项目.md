@@ -1,8 +1,8 @@
 ---
 title: CentOS 6.10部署vue项目
 date: 2020-08-17 12:07:31
-tags: centos vue
-categories: centos vue
+tags: centos vue 前端框架
+categories: 前端框架
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/centos.jpeg"
 ---

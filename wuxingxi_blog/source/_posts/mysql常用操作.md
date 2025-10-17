@@ -1,8 +1,8 @@
 ---
 title: mysql常用操作
 date: 2021-10-14 11:56:46
-tags: mysql
-categories: mysql
+tags: mysql 后端技术
+categories: 后端技术
 top_img: 
 cover: '![mysql-4288725](mysql常用操作/mysql-4288725.jpeg)'
 ---

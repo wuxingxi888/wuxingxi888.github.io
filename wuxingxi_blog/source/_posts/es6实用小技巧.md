@@ -1,8 +1,8 @@
 ---
 title: es6实用小技巧
 date: 2021-10-18 11:42:45
-tags: es6
-categories: es6
+tags: es6 前端基础
+categories: 前端基础
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/es6.jpeg"
 ---

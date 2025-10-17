@@ -1,8 +1,8 @@
 ---
 title: mysql连接池的premise封装
 date: 2021-10-14 11:39:32
-tags: mysql javascript
-categories: mysql javascript
+tags: mysql javascript 后端技术
+categories: 后端技术
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/mysql.jpeg"
 ---

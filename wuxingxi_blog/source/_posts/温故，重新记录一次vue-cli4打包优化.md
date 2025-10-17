@@ -1,8 +1,8 @@
 ---
 title: 温故，重新记录一次vue-cli4打包优化
-date: 2024-01-17 20:16:58
-tags: vue vue-cli4 webpack
-categories: vue vue-cli4 webpack
+date: 2023-01-19 12:16:58
+tags: vue vue-cli4 webpack 前端框架
+categories: 前端框架
 top_img:
 cover: https://s2.loli.net/2024/01/17/BIXVTMKPUwecxbn.png
 ---

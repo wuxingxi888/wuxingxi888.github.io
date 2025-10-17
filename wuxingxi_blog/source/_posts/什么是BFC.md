@@ -1,8 +1,8 @@
 ---
 title: 什么是BFC
 date: 2021-11-11 16:32:27
-tags: CSS HTML
-categories: CSS HTML
+tags: CSS HTML 前端基础
+categories: 前端基础
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/css.jpeg"
 ---

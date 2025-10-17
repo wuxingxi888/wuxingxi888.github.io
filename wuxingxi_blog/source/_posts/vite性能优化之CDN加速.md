@@ -1,8 +1,8 @@
 ---
 title: vite性能优化之CDN加速
-date: 2024-02-02 10:59:20
-tags: vite vue
-categories: vite vue
+date: 2023-02-06 02:59:20
+tags: vite vue 前端框架
+categories: 前端框架
 top_img:
 cover: https://s2.loli.net/2024/02/02/8cRdqZbAUnhVeLE.webp
 ---

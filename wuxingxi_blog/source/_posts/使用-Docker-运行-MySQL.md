@@ -1,8 +1,8 @@
 ---
 title: 使用 Docker 运行 MySQL
-date: 2024-05-27 12:21:50
-tags: dorker mysql
-categories: dorker mysql
+date: 2023-05-27 04:21:50
+tags: dorker mysql 后端技术
+categories: 后端技术
 top_img:
 cover: https://s2.loli.net/2024/05/27/I7ePHQvBJNWf3Ug.jpg
 ---

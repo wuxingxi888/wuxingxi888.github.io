@@ -1,8 +1,8 @@
 ---
 title: CSS八种让人眼前一亮的HOVER效果
 date: 2021-10-25 11:19:55
-tags: css
-categories: css
+tags: css 前端基础
+categories: 前端基础
 top_img:
 cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/css.jpeg"
 ---
