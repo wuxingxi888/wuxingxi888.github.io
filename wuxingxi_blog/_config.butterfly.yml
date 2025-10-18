@@ -409,7 +409,7 @@ gitter:
 # https://crisp.chat/en/
 crisp:
     enable: true
-    website_id: 15483468-6fcb-4c70-8136-31af59659550
+    website_id: 57a788e8-59fc-4ef7-a7f5-aaecd77ff2ec
 
 # Footer Settings
 # --------------------------------------
@@ -893,7 +893,7 @@ CDN:
     mermaid: https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js
 
     # count
-    busuanzi: //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+    busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
 
     # background effect
     canvas_ribbon: https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-ribbon.min.js
