@@ -2556,6 +2556,11 @@ hexo-cli@^4.3.0:
     resolve "^1.11.0"
     tildify "^2.0.0"
 
+hexo-codepen@^0.1.1:
+  version "0.1.1"
+  resolved "https://mirrors.cloud.tencent.com/npm/hexo-codepen/-/hexo-codepen-0.1.1.tgz"
+  integrity sha512-b0cUHt9cyJX2oUWpXpYCg6QJ2vUX2sPdXtbziQwp54mntvBJ6gDKW1OU+LuZrxQvasCHq25kwg1fMimwv7/H2g==
+
 hexo-deployer-git@^4.0.0:
   version "4.0.0"
   resolved "https://mirrors.cloud.tencent.com/npm/hexo-deployer-git/-/hexo-deployer-git-4.0.0.tgz"

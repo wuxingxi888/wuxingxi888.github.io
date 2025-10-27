@@ -24,9 +24,11 @@ cover: "https://wuxingxi-blog.oss-cn-beijing.aliyuncs.com/images/vue.jpeg"
 最基本的异步组件定义方式如下：
 
 ```javascript
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from "vue";
 
-const AsyncComponent = defineAsyncComponent(() => import('./components/MyComponent.vue'))
+const AsyncComponent = defineAsyncComponent(() =>
+    import("./components/MyComponent.vue")
+);
 ```
 
 在上面的代码中，[defineAsyncComponent](file:///Users/wuxingxi/Desktop/wuxingxi_blog_code/wuxingxi_blog/source/_posts/vue3-reactive-vs-ref.md#L429-L429) 接受一个工厂函数，该函数返回一个 [import()](file:///Users/wuxingxi/Desktop/wuxingxi_blog_code/wuxingxi_blog/source/_posts/js之commonjs和es-module理解.md#L305-L305) 动态导入的 Promise。当组件被渲染时，Vue 会自动加载并渲染该组件。
@@ -37,20 +39,22 @@ const AsyncComponent = defineAsyncComponent(() => import('./components/MyCompone
 
 ```vue
 <template>
-  <div>
-    <h1>异步组件示例</h1>
-    <AsyncComponent />
-  </div>
+    <div>
+        <h1>异步组件示例</h1>
+        <AsyncComponent />
+    </div>
 </template>
 
 <script>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from "vue";
 
 export default {
-  components: {
-    AsyncComponent: defineAsyncComponent(() => import('./components/MyComponent.vue'))
-  }
-}
+    components: {
+        AsyncComponent: defineAsyncComponent(() =>
+            import("./components/MyComponent.vue")
+        ),
+    },
+};
 </script>
 ```
 
@@ -58,16 +62,18 @@ export default {
 
 ```vue
 <script setup>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from "vue";
 
-const AsyncComponent = defineAsyncComponent(() => import('./components/MyComponent.vue'))
+const AsyncComponent = defineAsyncComponent(() =>
+    import("./components/MyComponent.vue")
+);
 </script>
 
 <template>
-  <div>
-    <h1>异步组件示例</h1>
-    <AsyncComponent />
-  </div>
+    <div>
+        <h1>异步组件示例</h1>
+        <AsyncComponent />
+    </div>
 </template>
 ```
 
@@ -77,42 +83,42 @@ const AsyncComponent = defineAsyncComponent(() => import('./components/MyCompone
 
 ```javascript
 const AsyncComponent = defineAsyncComponent({
-  // 异步加载组件的函数
-  loader: () => import('./MyComponent.vue'),
-  
-  // 加载过程中显示的组件
-  loadingComponent: LoadingComponent,
-  
-  // 加载失败时显示的组件
-  errorComponent: ErrorComponent,
-  
-  // 延迟显示加载组件的时间（毫秒）
-  delay: 200,
-  
-  // 超时时间（毫秒）
-  timeout: 3000,
-  
-  // 在加载异步组件时是否禁用 suspense
-  suspensible: false,
-  
-  /**
-   * 处理加载错误的回调
-   * @param {Error} error - 加载错误
-   * @param {Function} retry - 重试函数
-   * @param {Function} fail - 失败函数
-   * @param {number} attempts - 重试次数
-   */
-  onError(error, retry, fail, attempts) {
-    if (error.message.match(/fetch/) && attempts <= 3) {
-      // 请求失败时重试，最多重试3次
-      retry()
-    } else {
-      // 注意，retry/fail 就像 Promise 的 resolve/reject 一样：
-      // 必须调用其中一个才能继续错误处理。
-      fail()
-    }
-  }
-})
+    // 异步加载组件的函数
+    loader: () => import("./MyComponent.vue"),
+
+    // 加载过程中显示的组件
+    loadingComponent: LoadingComponent,
+
+    // 加载失败时显示的组件
+    errorComponent: ErrorComponent,
+
+    // 延迟显示加载组件的时间（毫秒）
+    delay: 200,
+
+    // 超时时间（毫秒）
+    timeout: 3000,
+
+    // 在加载异步组件时是否禁用 suspense
+    suspensible: false,
+
+    /**
+     * 处理加载错误的回调
+     * @param {Error} error - 加载错误
+     * @param {Function} retry - 重试函数
+     * @param {Function} fail - 失败函数
+     * @param {number} attempts - 重试次数
+     */
+    onError(error, retry, fail, attempts) {
+        if (error.message.match(/fetch/) && attempts <= 3) {
+            // 请求失败时重试，最多重试3次
+            retry();
+        } else {
+            // 注意，retry/fail 就像 Promise 的 resolve/reject 一样：
+            // 必须调用其中一个才能继续错误处理。
+            fail();
+        }
+    },
+});
 ```
 
 ### 加载状态处理
@@ -121,19 +127,19 @@ const AsyncComponent = defineAsyncComponent({
 
 ```vue
 <script setup>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from "vue";
 
 const AsyncComponent = defineAsyncComponent({
-  loader: () => import('./components/MyComponent.vue'),
-  loadingComponent: {
-    template: '<div>加载中...</div>'
-  },
-  delay: 200 // 延迟200ms显示加载组件
-})
+    loader: () => import("./components/MyComponent.vue"),
+    loadingComponent: {
+        template: "<div>加载中...</div>",
+    },
+    delay: 200, // 延迟200ms显示加载组件
+});
 </script>
 
 <template>
-  <AsyncComponent />
+    <AsyncComponent />
 </template>
 ```
 
@@ -143,26 +149,26 @@ const AsyncComponent = defineAsyncComponent({
 
 ```vue
 <script setup>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from "vue";
 
 const AsyncComponent = defineAsyncComponent({
-  loader: () => import('./components/MyComponent.vue'),
-  errorComponent: {
-    template: `
+    loader: () => import("./components/MyComponent.vue"),
+    errorComponent: {
+        template: `
       <div>
         <p>组件加载失败</p>
         <button @click="handleRetry">重试</button>
       </div>
     `,
-    methods: {
-      handleRetry() {
-        // 重新加载组件
-        location.reload()
-      }
-    }
-  },
-  timeout: 5000 // 5秒超时
-})
+        methods: {
+            handleRetry() {
+                // 重新加载组件
+                location.reload();
+            },
+        },
+    },
+    timeout: 5000, // 5秒超时
+});
 </script>
 ```
 
@@ -174,23 +180,25 @@ Vue 3 引入了 [Suspense](file:///Users/wuxingxi/Desktop/wuxingxi_blog_code/wux
 
 ```vue
 <template>
-  <Suspense>
-    <!-- 异步组件 -->
-    <template #default>
-      <AsyncComponent />
-    </template>
-    
-    <!-- 加载状态 -->
-    <template #fallback>
-      <div>加载中...</div>
-    </template>
-  </Suspense>
+    <Suspense>
+        <!-- 异步组件 -->
+        <template #default>
+            <AsyncComponent />
+        </template>
+
+        <!-- 加载状态 -->
+        <template #fallback>
+            <div>加载中...</div>
+        </template>
+    </Suspense>
 </template>
 
 <script setup>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from "vue";
 
-const AsyncComponent = defineAsyncComponent(() => import('./components/MyComponent.vue'))
+const AsyncComponent = defineAsyncComponent(() =>
+    import("./components/MyComponent.vue")
+);
 </script>
 ```
 
@@ -200,51 +208,53 @@ const AsyncComponent = defineAsyncComponent(() => import('./components/MyCompone
 
 ```vue
 <template>
-  <Suspense>
-    <template #default>
-      <UserProfile />
-    </template>
-    
-    <template #fallback>
-      <div class="skeleton">
-        <div class="skeleton-avatar"></div>
-        <div class="skeleton-name"></div>
-        <div class="skeleton-bio"></div>
-      </div>
-    </template>
-  </Suspense>
+    <Suspense>
+        <template #default>
+            <UserProfile />
+        </template>
+
+        <template #fallback>
+            <div class="skeleton">
+                <div class="skeleton-avatar"></div>
+                <div class="skeleton-name"></div>
+                <div class="skeleton-bio"></div>
+            </div>
+        </template>
+    </Suspense>
 </template>
 
 <script setup>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from "vue";
 
-const UserProfile = defineAsyncComponent(() => import('./components/UserProfile.vue'))
+const UserProfile = defineAsyncComponent(() =>
+    import("./components/UserProfile.vue")
+);
 </script>
 
 <style>
 .skeleton {
-  padding: 20px;
+    padding: 20px;
 }
 
 .skeleton-avatar {
-  width: 80px;
-  height: 80px;
-  background: #eee;
-  border-radius: 50%;
-  margin-bottom: 10px;
+    width: 80px;
+    height: 80px;
+    background: #eee;
+    border-radius: 50%;
+    margin-bottom: 10px;
 }
 
 .skeleton-name {
-  width: 60%;
-  height: 20px;
-  background: #eee;
-  margin-bottom: 10px;
+    width: 60%;
+    height: 20px;
+    background: #eee;
+    margin-bottom: 10px;
 }
 
 .skeleton-bio {
-  width: 100%;
-  height: 15px;
-  background: #eee;
+    width: 100%;
+    height: 15px;
+    background: #eee;
 }
 </style>
 ```
@@ -256,27 +266,27 @@ const UserProfile = defineAsyncComponent(() => import('./components/UserProfile.
 在 Vue Router 中使用异步组件实现路由懒加载：
 
 ```javascript
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: () => import('./views/Home.vue')
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import('./views/About.vue')
-  }
-]
+    {
+        path: "/",
+        name: "Home",
+        component: () => import("./views/Home.vue"),
+    },
+    {
+        path: "/about",
+        name: "About",
+        component: () => import("./views/About.vue"),
+    },
+];
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes
-})
+    history: createWebHistory(),
+    routes,
+});
 
-export default router
+export default router;
 ```
 
 ### 2. 条件加载组件
@@ -285,22 +295,24 @@ export default router
 
 ```vue
 <template>
-  <div>
-    <button @click="showAdvanced = !showAdvanced">
-      {{ showAdvanced ? '隐藏' : '显示' }}高级功能
-    </button>
-    
-    <AdvancedComponent v-if="showAdvanced" />
-  </div>
+    <div>
+        <button @click="showAdvanced = !showAdvanced">
+            {{ showAdvanced ? "隐藏" : "显示" }}高级功能
+        </button>
+
+        <AdvancedComponent v-if="showAdvanced" />
+    </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { defineAsyncComponent } from 'vue'
+import { ref } from "vue";
+import { defineAsyncComponent } from "vue";
 
-const AdvancedComponent = defineAsyncComponent(() => import('./components/AdvancedComponent.vue'))
+const AdvancedComponent = defineAsyncComponent(() =>
+    import("./components/AdvancedComponent.vue")
+);
 
-const showAdvanced = ref(false)
+const showAdvanced = ref(false);
 </script>
 ```
 
@@ -310,17 +322,17 @@ const showAdvanced = ref(false)
 
 ```vue
 <script setup>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from "vue";
 
 // 大型图表组件按需加载
 const ChartComponent = defineAsyncComponent({
-  loader: () => import('./components/HeavyChart.vue'),
-  loadingComponent: {
-    template: '<div class="chart-loading">图表加载中...</div>'
-  },
-  delay: 200,
-  timeout: 10000
-})
+    loader: () => import("./components/HeavyChart.vue"),
+    loadingComponent: {
+        template: '<div class="chart-loading">图表加载中...</div>',
+    },
+    delay: 200,
+    timeout: 10000,
+});
 </script>
 ```
 
@@ -330,10 +342,12 @@ const ChartComponent = defineAsyncComponent({
 
 ```vue
 <script setup>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from "vue";
 
 // 按需加载第三方编辑器
-const EditorComponent = defineAsyncComponent(() => import('@tinymce/tinymce-vue'))
+const EditorComponent = defineAsyncComponent(() =>
+    import("@tinymce/tinymce-vue")
+);
 </script>
 ```
 
@@ -370,10 +384,11 @@ const EditorComponent = defineAsyncComponent(() => import('@tinymce/tinymce-vue'
 Vue 3 的异步组件功能为我们提供了一种强大的性能优化手段。通过 [defineAsyncComponent](file:///Users/wuxingxi/Desktop/wuxingxi_blog_code/wuxingxi_blog/source/_posts/vue3-reactive-vs-ref.md#L429-L429) 函数，我们可以轻松实现组件的按需加载，配合 [Suspense](file:///Users/wuxingxi/Desktop/wuxingxi_blog_code/wuxingxi_blog/source/_posts/vue2对比vue3.md#L584-L584) 组件，还能提供优雅的加载状态管理。
 
 在实际开发中，我们应该合理使用异步组件，特别是在以下场景：
-- 路由组件懒加载
-- 大型第三方库的按需加载
-- 条件渲染的复杂组件
-- 非首屏关键路径上的组件
+
+-   路由组件懒加载
+-   大型第三方库的按需加载
+-   条件渲染的复杂组件
+-   非首屏关键路径上的组件
 
 通过合理使用异步组件，我们可以显著提升应用的加载性能和用户体验，特别是在网络环境较差的情况下，效果更为明显。
 
