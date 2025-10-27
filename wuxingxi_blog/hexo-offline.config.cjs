@@ -4,36 +4,47 @@
  */
 
 module.exports = {
-  globDirectory: 'public',
-  globPatterns: [
-    '**/*.{js,css,png,jpg,gif,svg,eot,ttf,woff,woff2,json,xml,ico}'
-  ],
-  swDest: 'public/service-worker.js',
-  maximumFileSizeToCacheInBytes: 10485760, // 10MB
-  skipWaiting: true,
-  clientsClaim: true,
-  runtimeCaching: [
-    {
-      urlPattern: /\/$/,
-      handler: 'NetworkFirst',
-      options: {
-        cacheName: 'html-content',
-        expiration: {
-          maxEntries: 100,
-          maxAgeSeconds: 86400 // 24 hours
-        }
-      }
-    },
-    {
-      urlPattern: /\.html$/,
-      handler: 'NetworkFirst',
-      options: {
-        cacheName: 'html-content',
-        expiration: {
-          maxEntries: 100,
-          maxAgeSeconds: 86400 // 24 hours
-        }
-      }
-    }
-  ]
+    globDirectory: "public",
+    globPatterns: [
+        "**/*.{js,css,png,jpg,gif,svg,eot,ttf,woff,woff2,json,xml,ico}",
+    ],
+    swDest: "public/service-worker.js",
+    maximumFileSizeToCacheInBytes: 10485760, // 10MB
+    skipWaiting: true,
+    clientsClaim: true,
+    runtimeCaching: [
+        {
+            urlPattern: /\/$/,
+            handler: "NetworkFirst",
+            options: {
+                cacheName: "html-content",
+                expiration: {
+                    maxEntries: 100,
+                    maxAgeSeconds: 3600, // 1 hour
+                },
+            },
+        },
+        {
+            urlPattern: /\.html$/,
+            handler: "NetworkFirst",
+            options: {
+                cacheName: "html-content",
+                expiration: {
+                    maxEntries: 100,
+                    maxAgeSeconds: 3600, // 1 hour
+                },
+            },
+        },
+        {
+            urlPattern: /^https:\/\/wuxingxi-blog\.oss-cn-beijing\.aliyuncs\.com\/.*/,
+            handler: "CacheFirst",
+            options: {
+                cacheName: "image-cache",
+                expiration: {
+                    maxEntries: 50,
+                    maxAgeSeconds: 604800, // 7 days
+                },
+            },
+        },
+    ],
 };
