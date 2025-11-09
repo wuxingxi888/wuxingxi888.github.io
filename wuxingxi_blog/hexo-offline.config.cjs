@@ -20,7 +20,7 @@ module.exports = {
                 cacheName: "html-content",
                 expiration: {
                     maxEntries: 100,
-                    maxAgeSeconds: 3600, // 1 hour
+                    maxAgeSeconds: 600, // 10 minutes
                 },
             },
         },
@@ -31,7 +31,18 @@ module.exports = {
                 cacheName: "html-content",
                 expiration: {
                     maxEntries: 100,
-                    maxAgeSeconds: 3600, // 1 hour
+                    maxAgeSeconds: 600, // 10 minutes
+                },
+            },
+        },
+        {
+            urlPattern: /\.(js|css)$/,
+            handler: "StaleWhileRevalidate",
+            options: {
+                cacheName: "static-resources",
+                expiration: {
+                    maxEntries: 100,
+                    maxAgeSeconds: 86400, // 24 hours
                 },
             },
         },
