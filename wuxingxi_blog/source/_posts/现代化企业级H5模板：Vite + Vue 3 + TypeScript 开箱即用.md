@@ -3,8 +3,8 @@ title: 现代化企业级H5模板：Vite + Vue 3 + TypeScript 开箱即用
 date: 2025-10-20 10:00:00
 tags: vite vue3 typescript h5 模板 前端开发 pinia 前端框架
 categories: 前端框架
-top_img: "https://p3-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/dc895f0bd7474ce294f7f405c974de42~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgd3V4aW5neGk=:q75.awebp?rk3s=f64ab15b&x-expires=1763722588&x-signature=zfOs6hZAtDfRNf6p74kUIAszAFA%3D"
-cover: "https://p3-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/dc895f0bd7474ce294f7f405c974de42~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgd3V4aW5neGk=:q75.awebp?rk3s=f64ab15b&x-expires=1763722588&x-signature=zfOs6hZAtDfRNf6p74kUIAszAFA%3D"
+top_img: "https://cdn.jsdelivr.net/gh/wuxingxi888/CDN_IMG_BED/h5_template_cover.webp"
+cover: "https://cdn.jsdelivr.net/gh/wuxingxi888/CDN_IMG_BED/h5_template_cover.webp"
 sticky: true
 ---
 
