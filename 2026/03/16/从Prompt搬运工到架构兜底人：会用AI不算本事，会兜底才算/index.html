@@ -1,0 +1,496 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>从“Prompt 搬运工”到“架构兜底人”：会用 AI 不算本事，会兜底才算 | 吴星喜的博客</title><meta name="author" content="吴星喜"><meta name="copyright" content="吴星喜"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这两年刷技术社区，最常见的几个关键词就是「AI 提效」「十分钟上线一个营销页」「用 Prompt 写完一个项目」。 作为一个干了 8 年的前端，我当然承认 AI 带来的效率红利——我自己也在用 Cursor、Copilot、各种 LLM 写代码、补测试、查文档。但这两年下来，我越来越强烈地意识到一件"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wuxingxi.top/2026/03/16/%E4%BB%8EPrompt%E6%90%AC%E8%BF%90%E5%B7%A5%E5%88%B0%E6%9E%B6%E6%9E%84%E5%85%9C%E5%BA%95%E4%BA%BA%EF%BC%9A%E4%BC%9A%E7%94%A8AI%E4%B8%8D%E7%AE%97%E6%9C%AC%E4%BA%8B%EF%BC%8C%E4%BC%9A%E5%85%9C%E5%BA%95%E6%89%8D%E7%AE%97/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/img/avatar.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png"/><link rel="mask-icon" href="/img/avatar.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"这篇文章距离上次更新已过了","messageNext":"天，信息可能已过时。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 吴星喜","link":"链接: ","source":"来源: 吴星喜的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '从“Prompt 搬运工”到“架构兜底人”：会用 AI 不算本事，会兜底才算',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-03-16 18:31:28'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><style type="text/css">#toggle-sidebar {left:100px}</style><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">65</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">46</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/wuxingxi888/CDN_IMG_BED/AI Coding thinking.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="吴星喜的博客"><span class="site-name">吴星喜的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">从“Prompt 搬运工”到“架构兜底人”：会用 AI 不算本事，会兜底才算<a class="post-edit-link" href="https://github.com/wuxingxi888/wuxingxi888.github.io/edit/main/source/_posts/_posts/从Prompt搬运工到架构兜底人：会用AI不算本事，会兜底才算.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-16T02:00:00.000Z" title="发表于 2026-03-16 10:00:00">2026-03-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-16T10:31:28.122Z" title="更新于 2026-03-16 18:31:28">2026-03-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="从“Prompt 搬运工”到“架构兜底人”：会用 AI 不算本事，会兜底才算"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>这两年刷技术社区，最常见的几个关键词就是「AI 提效」「十分钟上线一个营销页」「用 Prompt 写完一个项目」。</p>
+<p>作为一个干了 8 年的前端，我当然承认 AI 带来的效率红利——我自己也在用 Cursor、Copilot、各种 LLM 写代码、补测试、查文档。<br>但这两年下来，我越来越强烈地意识到一件事：</p>
+<blockquote>
+<p><strong>“会用 AI” 本身不是本事，能为 AI 产出的代码兜底，才是。</strong></p>
+</blockquote>
+<p>以前我们写代码，脑子里有清晰的模块边界、职责划分。现在有了 AI，很多人习惯的是<strong>先喂一段 Prompt，看 AI 回什么，再想办法塞进项目里</strong>。<br>如果你只是这样用 AI，你得到的不是“提效”，而是更快地把项目写成一坨谁也不想维护的屎山。</p>
+<p>下面我就从一个 8 年前端的视角，讲讲我自己是怎么看待「从 Prompt 搬运工到架构兜底人」这件事的。</p>
+<hr>
+<h3 id="要警惕-AI-只“跑通”不“善后”"><a href="#要警惕-AI-只“跑通”不“善后”" class="headerlink" title="要警惕 AI 只“跑通”不“善后”"></a>要警惕 AI 只“跑通”不“善后”</h3><p>我现在几乎天天用 AI 写代码，但有一个前提：<strong>AI 给我的东西，默认是不可信的草稿</strong>。</p>
+<p>我在日常工作里真切踩到、或者在别人代码里见过的几个典型坑，大概是这些：</p>
+<ul>
+<li><p><strong>副作用和资源释放</strong></p>
+<ul>
+<li>在 <code>useEffect</code> &#x2F; 各种响应式监听里，AI 很喜欢一股脑把订阅、事件监听、定时器全写进去，但<strong>清理逻辑写得非常敷衍</strong>，甚至不写。</li>
+<li>闭包本身不是问题，问题是<strong>订阅的生命周期和数据的生命周期错位</strong>，久而久之就是内存泄漏、重复监听、重复请求。</li>
+</ul>
+</li>
+<li><p><strong>异步请求的边界条件</strong></p>
+<ul>
+<li>用户疯狂点击刷新 &#x2F; 切 Tab，AI 默认你永远在“理想网络环境”下，几乎不会帮你加 <code>AbortController</code> 或者请求竞态保护。</li>
+<li>结果就是：后返回的老请求覆盖先返回的新数据，各种诡异的状态错乱。</li>
+</ul>
+</li>
+<li><p><strong>依赖引入的“隐性体积”</strong></p>
+<ul>
+<li>为了完成一个并不复杂的功能，AI 很自然地帮你引入一个 100KB+ 的库。它不会替你思考：<ul>
+<li>你们项目有没有体积预算？</li>
+<li>有没有现成的封装可以复用？</li>
+<li>这个功能是不是用几行原生 + 适当封装就能解决？</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>这些坑，本质上都是<strong>工程视角</strong>的问题，而不是“这段代码能不能跑起来”的问题。</p>
+<p>所以我对“用 AI 提效”的基本态度是：</p>
+<blockquote>
+<p><strong>AI 负责给我一个能跑的初稿；我负责让这段代码配得上进你们的代码库。</strong></p>
+</blockquote>
+<p>我会怎么做？</p>
+<ul>
+<li>看所有<strong>副作用相关的代码</strong>：事件监听、定时器、订阅、全局状态写入。</li>
+<li>对所有<strong>网络请求</strong>加上：超时机制、取消机制、竞态保护。</li>
+<li>对所有<strong>新增依赖</strong>做一次“引入理由 + 体积 + 使用范围”的 review。</li>
+<li>对关键逻辑加上<strong>最小单测 &#x2F; 契约测试</strong>，起码保证回归成本可控。</li>
+</ul>
+<p>如果做不到这些，再快的提效都只是<strong>把未来的维护成本借来透支</strong>。</p>
+<hr>
+<h3 id="架构和规范：别被-AI-牵着鼻子走"><a href="#架构和规范：别被-AI-牵着鼻子走" class="headerlink" title="架构和规范：别被 AI 牵着鼻子走"></a>架构和规范：别被 AI 牵着鼻子走</h3><p>我越来越有这种直观感受：</p>
+<blockquote>
+<p><strong>普通人被 AI 牵着鼻子走，架构兜底的人，会反过来用规范把 AI 关在笼子里。</strong></p>
+</blockquote>
+<p>以前我写一个中大型前端项目，脑子里最先冒出来的是：</p>
+<ul>
+<li>领域是怎么拆的？</li>
+<li>模块边界在哪里？</li>
+<li>哪些是 domain 层，哪些是 app &#x2F; service 层，哪些是 UI 壳？</li>
+</ul>
+<p>有了 AI 之后，如果只剩下“喂一段 Prompt，拿一段代码”，项目的<strong>熵增速度会快得离谱</strong>。</p>
+<p>所以这两年我做得最多的一件事，其实不是“教团队怎么写 Prompt”，而是：</p>
+<blockquote>
+<p><strong>先把规则和边界定清楚，再允许大家带着 AI 一起写。</strong></p>
+</blockquote>
+<p>比如我会在团队里推这样几类约束：</p>
+<ul>
+<li><p><strong>Cursor &#x2F; AI 使用规范</strong></p>
+<ul>
+<li>哪些目录（比如核心交易链路、风控逻辑）<strong>禁止 AI 直接生成实现</strong>，只允许在注释 &#x2F; 文档 &#x2F; 测试上辅助。</li>
+<li>哪些模块可以 AI 先写一版，但必须满足：<ul>
+<li>类型完整、不可 <code>any</code> 滥用</li>
+<li>通过指定 ESLint 规则</li>
+<li>内部抽象层级不能超过约定的复杂度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>类型定义和领域模型</strong></p>
+<ul>
+<li>先把关键领域模型抽象成 <code>Type / Interface</code>，再让 AI 在这些类型的约束下生成代码。</li>
+<li>这样可以尽量避免 AI 直接在业务代码里“击穿”你的领域边界。</li>
+</ul>
+</li>
+<li><p><strong>依赖白名单 &#x2F; 黑名单</strong></p>
+<ul>
+<li>白名单：组件库、工具库、日期处理、请求库等有统一选型，AI 必须在这些库范围下找解法。</li>
+<li>黑名单：历史上踩过坑、体积太大、维护不善的库，直接在规则里禁止建议。</li>
+</ul>
+</li>
+<li><p><strong>PR 模板 + Review Checklist</strong></p>
+<ul>
+<li>每个包含 AI 生成代码的 PR，在描述里要写清楚：这部分是 AI 初稿 + 人工修改的范围。</li>
+<li>Review 的时候，人工重点盯：边界条件、副作用、依赖选择、与现有架构是否一致。</li>
+</ul>
+</li>
+</ul>
+<p>这些东西听起来很“工程化”，但我现在越来越觉得：</p>
+<blockquote>
+<p><strong>用 AI 之前先想清楚架构和规范，是一个架构兜底人和 Prompt 搬运工之间最大的差别。</strong></p>
+</blockquote>
+<hr>
+<h3 id="提效的真正意义：把时间挤到深水区"><a href="#提效的真正意义：把时间挤到深水区" class="headerlink" title="提效的真正意义：把时间挤到深水区"></a>提效的真正意义：把时间挤到深水区</h3><p>我自己对“提效”的理解，大致是这样的：</p>
+<blockquote>
+<p><strong>提效的意义，是为了腾出时间去研究那些 AI 还没学会、也暂时替代不了你的硬核能力，而不是心安理得地退化成一个 Prompt 搬运工。</strong></p>
+</blockquote>
+<p>这几年我用 AI 省下来的时间，主要花在几件事上：</p>
+<ul>
+<li><p><strong>补上底层原理的短板</strong></p>
+<ul>
+<li>比如重新系统性梳理：Event Loop、微任务 &#x2F; 宏任务、浏览器渲染管线、内存回收等。</li>
+<li>去看 Vue &#x2F; React 等框架的部分源码，研究它们如何处理调度、依赖收集、更新批次等。</li>
+</ul>
+</li>
+<li><p><strong>练「排障闭环」能力</strong></p>
+<ul>
+<li>AI 很难完全帮你搞定那种：线上偶现、只在某一类机型 &#x2F; 某一版浏览器出现的 Crash。</li>
+<li>这类问题往往需要你去：<ul>
+<li>仔细看监控和日志</li>
+<li>制造或捕获最小复现</li>
+<li>在 Chrome DevTools 里看 Memory Heap &#x2F; Performance Timeline</li>
+<li>甚至去翻一眼浏览器的已知 issue</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>加强工程化手感</strong></p>
+<ul>
+<li>把 CI &#x2F; CD、单测、契约测试、端到端测试、灰度发布这些东西玩熟。</li>
+<li>能站在更高一层看：“我们的交付链路是不是健康的？”</li>
+</ul>
+</li>
+</ul>
+<p>坦白说，如果你把 AI 省下来的时间全部拿去摸鱼，那你在团队里的边际价值，很快就会被下一代更便宜的 AI 操作员稀释掉。</p>
+<hr>
+<h3 id="我怎么判断自己是不是还在当「Prompt-搬运工」？"><a href="#我怎么判断自己是不是还在当「Prompt-搬运工」？" class="headerlink" title="我怎么判断自己是不是还在当「Prompt 搬运工」？"></a>我怎么判断自己是不是还在当「Prompt 搬运工」？</h3><p>从面试官的角度去拷问候选人是一种方法，我更常用的，是<strong>把这些问题用来拷问我自己</strong>。</p>
+<p>如果你也在用 AI 写代码，不妨一起自查一下：</p>
+<ol>
+<li><p><strong>AI 改了底层公共组件，你会怎么确保线上不崩？</strong></p>
+<ul>
+<li>你会不会：<ul>
+<li>首先看「影响面」和「依赖关系」</li>
+<li>补上必要的测试</li>
+<li>设计一套回滚策略和监控指标？</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>你有没有给自己和团队划定过「AI 禁区」？</strong></p>
+<ul>
+<li>哪些业务模块你会明确规定：<ul>
+<li>只能人工设计和实现</li>
+<li>AI 只能用于文档 &#x2F; 注释 &#x2F; 测试</li>
+</ul>
+</li>
+<li>你的理由是什么？是因为这里风险高，还是因为这里有团队的核心竞争力？</li>
+</ul>
+</li>
+<li><p><strong>在审美同质化的今天，你怎么用工程手段支撑“良好体验”？</strong></p>
+<ul>
+<li>如果 UI 组件、动效很多是 AI &#x2F; 库生成的，你有没有想过：<ul>
+<li>通过哪些工程化手段（设计系统、交互规范、动效基线、性能预算），让体验保持稳定和高级感？</li>
+<li>怎么在“快”与“好看、好用”之间找到一个你认可的平衡点？</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>面对 AI 生成的代码，你的第一反应是什么？</strong></p>
+<ul>
+<li>是“哇真方便，复制粘贴完事”？</li>
+<li>还是“这个实现我大概懂 7 成，但还有 3 成不踏实，我要把这 3 成抠清楚再合并”？</li>
+</ul>
+</li>
+</ol>
+<p>如果大部分时候，你只是把 AI 当成一个“更聪明的 Stack Overflow 复制器”，那你大概率还停留在「Prompt 搬运工」阶段。</p>
+<hr>
+<h3 id="写在最后：手可以闲一点，脑子得转得更凶"><a href="#写在最后：手可以闲一点，脑子得转得更凶" class="headerlink" title="写在最后：手可以闲一点，脑子得转得更凶"></a>写在最后：手可以闲一点，脑子得转得更凶</h3><p>说句心里话，我一点也不怀疑 AI 会越来越强，强到今天我们认为很“高级”的工作，也会被一点一点侵蚀掉。</p>
+<p>所以我现在更愿意这样看待自己的角色：</p>
+<blockquote>
+<p><strong>AI 负责拓宽“能做的事情”的边界，我负责守好“应该怎么做才算负责任”的底线。</strong></p>
+</blockquote>
+<p>在没有 AI 的年代，我们习惯了靠手速、靠熬夜、靠体力堆产出。<br>在有 AI 的时代，手确实可以闲下来一部分了，但这并不意味着你可以脑子也一起放假。</p>
+<p>反而是现在，我更常提醒自己：</p>
+<blockquote>
+<p><strong>手是可以比以前更闲一点，但脑子得转得比以前更凶。</strong></p>
+</blockquote>
+<p>从「Prompt 搬运工」到「架构兜底人」，中间隔着的，既不是几条 Prompt 模板，也不是几篇工具教程，而是你愿不愿意、敢不敢为 AI 生成的每一行代码的后果负责。</p>
+<p>如果你也有类似的思考，欢迎一起聊聊你在团队里是怎么用 AI 的，以及你见过的那些“AI 把坑挖大了”的真实案例。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wuxingxi.top">吴星喜</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wuxingxi.top/2026/03/16/%E4%BB%8EPrompt%E6%90%AC%E8%BF%90%E5%B7%A5%E5%88%B0%E6%9E%B6%E6%9E%84%E5%85%9C%E5%BA%95%E4%BA%BA%EF%BC%9A%E4%BC%9A%E7%94%A8AI%E4%B8%8D%E7%AE%97%E6%9C%AC%E4%BA%8B%EF%BC%8C%E4%BC%9A%E5%85%9C%E5%BA%95%E6%89%8D%E7%AE%97/">https://wuxingxi.top/2026/03/16/%E4%BB%8EPrompt%E6%90%AC%E8%BF%90%E5%B7%A5%E5%88%B0%E6%9E%B6%E6%9E%84%E5%85%9C%E5%BA%95%E4%BA%BA%EF%BC%9A%E4%BC%9A%E7%94%A8AI%E4%B8%8D%E7%AE%97%E6%9C%AC%E4%BA%8B%EF%BC%8C%E4%BC%9A%E5%85%9C%E5%BA%95%E6%89%8D%E7%AE%97/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wuxingxi.top" target="_blank">吴星喜的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI-%E5%89%8D%E7%AB%AF-%E5%B7%A5%E7%A8%8B%E5%8C%96/">AI 前端 工程化</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/wuxingxi888/CDN_IMG_BED/AI Coding thinking.webp" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2026/03/12/OpenSpec-%E8%A7%84%E6%A0%BC%E9%A9%B1%E5%8A%A8AI%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/" title="OpenSpec：把“凭感觉写代码”变成“按规格交付”（Spec Coding 实战指南）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/wuxingxi888/CDN_IMG_BED/vibe_coding.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">OpenSpec：把“凭感觉写代码”变成“按规格交付”（Spec Coding 实战指南）</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A6%81%E8%AD%A6%E6%83%95-AI-%E5%8F%AA%E2%80%9C%E8%B7%91%E9%80%9A%E2%80%9D%E4%B8%8D%E2%80%9C%E5%96%84%E5%90%8E%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">要警惕 AI 只“跑通”不“善后”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E5%92%8C%E8%A7%84%E8%8C%83%EF%BC%9A%E5%88%AB%E8%A2%AB-AI-%E7%89%B5%E7%9D%80%E9%BC%BB%E5%AD%90%E8%B5%B0"><span class="toc-number">2.</span> <span class="toc-text">架构和规范：别被 AI 牵着鼻子走</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E6%95%88%E7%9A%84%E7%9C%9F%E6%AD%A3%E6%84%8F%E4%B9%89%EF%BC%9A%E6%8A%8A%E6%97%B6%E9%97%B4%E6%8C%A4%E5%88%B0%E6%B7%B1%E6%B0%B4%E5%8C%BA"><span class="toc-number">3.</span> <span class="toc-text">提效的真正意义：把时间挤到深水区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E8%87%AA%E5%B7%B1%E6%98%AF%E4%B8%8D%E6%98%AF%E8%BF%98%E5%9C%A8%E5%BD%93%E3%80%8CPrompt-%E6%90%AC%E8%BF%90%E5%B7%A5%E3%80%8D%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">我怎么判断自己是不是还在当「Prompt 搬运工」？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E%EF%BC%9A%E6%89%8B%E5%8F%AF%E4%BB%A5%E9%97%B2%E4%B8%80%E7%82%B9%EF%BC%8C%E8%84%91%E5%AD%90%E5%BE%97%E8%BD%AC%E5%BE%97%E6%9B%B4%E5%87%B6"><span class="toc-number">5.</span> <span class="toc-text">写在最后：手可以闲一点，脑子得转得更凶</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By 吴星喜</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://github.com/wuxingxi888/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : ''
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><div class="aplayer no-destroy" data-id="458093163" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-lrctype="0" data-preload="none" data-autoplay="false" muted></div><script src="/live2d-widget/autoload.js"></script><script src="/js/check-update.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  window.$crisp = [];
+  window.CRISP_WEBSITE_ID = "57a788e8-59fc-4ef7-a7f5-aaecd77ff2ec";
+  (function () {
+    d = document;
+    s = d.createElement("script");
+    s.src = "https://client.crisp.chat/l.js";
+    s.async = 1;
+    d.getElementsByTagName("head")[0].appendChild(s);
+  })();
+  $crisp.push(["safe", true])
+
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const open = () => {
+      $crisp.push(["do", "chat:show"])
+      $crisp.push(["do", "chat:open"])
+    }
+
+    const close = () => {
+      $crisp.push(["do", "chat:hide"])
+    }
+
+    close()
+    $crisp.push(["on", "chat:closed", function() {
+      close()
+    }])
+
+    window.chatBtnFn = () => {
+      $crisp.is("chat:visible") ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        $crisp.push(["do", "chat:hide"])
+      },
+      show: () => {
+        $crisp.push(["do", "chat:show"])
+      }
+    }
+  }
+})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
