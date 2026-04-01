@@ -1,0 +1,561 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>前端 AI Coding 落地指南（一）架构篇 | 吴星喜的博客</title><meta name="author" content="吴星喜"><meta name="copyright" content="吴星喜"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本架构示例项目：AI Coding Guidelines   原文链接（掘金）：前端 AI Coding 落地指南（一）架构篇 转载声明：本文为转载整理内容，仅用于技术学习与交流；相关版权归原作者所有。如有侵权，请联系删除。 方案更新说明：文中多 Agent 配置方案已从“软链接共享”升级为“以"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://wuxingxi.top/2026/02/06/%E5%89%8D%E7%AB%AF%20AI%20Coding%20%E8%90%BD%E5%9C%B0%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89%E6%9E%B6%E6%9E%84%E7%AF%87/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/img/avatar.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png"/><link rel="mask-icon" href="/img/avatar.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"这篇文章距离上次更新已过了","messageNext":"天，信息可能已过时。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 吴星喜","link":"链接: ","source":"来源: 吴星喜的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '前端 AI Coding 落地指南（一）架构篇',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-04-01 19:38:42'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><style type="text/css">#toggle-sidebar {left:100px}</style><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">66</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">47</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/wuxingxi888/CDN_IMG_BED/AI_coding_1.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="吴星喜的博客"><span class="site-name">吴星喜的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">前端 AI Coding 落地指南（一）架构篇<a class="post-edit-link" href="https://github.com/wuxingxi888/wuxingxi888.github.io/edit/main/source/_posts/_posts/前端 AI Coding 落地指南（一）架构篇.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-06T09:26:13.000Z" title="发表于 2026-02-06 17:26:13">2026-02-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-01T11:38:42.582Z" title="更新于 2026-04-01 19:38:42">2026-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="前端 AI Coding 落地指南（一）架构篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>本架构示例项目：<a target="_blank" rel="noopener" href="https://github.com/wuxingxi888/ai-coding-guidelines">AI Coding Guidelines</a></p>
+</blockquote>
+<blockquote>
+<p>原文链接（掘金）：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7603347438013480995?utm_source=gold_browser_extension#heading-0">前端 AI Coding 落地指南（一）架构篇</a></p>
+<p>转载声明：本文为转载整理内容，仅用于技术学习与交流；相关版权归原作者所有。如有侵权，请联系删除。</p>
+<p>方案更新说明：文中多 Agent 配置方案已从“软链接共享”升级为“以 <code>.agents</code> 为单一事实源，通过 <code>scripts/sync-rules.js</code> 进行脚本物理分发同步”。</p>
+</blockquote>
+<p>你是不是也遇到过这些情况：AI 生成的代码风格和现有项目不一致；项目结构不符合预期，设计稿要么看不懂、要么分析漏项，页面 UI 还原度低；改来改去返工多，需求越走越偏，最后还得自己重写一版？</p>
+<p>我在实际项目里经过多次迭代的实践，落地了一套</p>
+<p><strong>以规范、能力扩展和流程为主线的 AI Coding 架构</strong></p>
+<p>把「风格不一致、步骤漏、设计稿不会分析&#x2F;验收、提案任务格式乱」都收进可控范围。落地之后最直观的效果是：</p>
+<p><strong>前端页面可以做到 90% 还原设计稿，需求实现更准确，代码风格一致，结构设计合理</strong></p>
+<hr>
+<h2 id="架构简介"><a href="#架构简介" class="headerlink" title="架构简介"></a>架构简介</h2><p>架构运用了多种现下流行的 Agent 通用能力：</p>
+<table>
+<thead>
+<tr>
+<th>架构组成</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SDD</td>
+<td>开发流程控制，保证需求不遗漏，开发不脱节，可进行需求分析&#x2F;开发规划&#x2F;验收测试&#x2F;复盘归档</td>
+</tr>
+<tr>
+<td>MCP</td>
+<td>对接外部能力，如设计稿读取、浏览器访问页面查看实际效果、接口文档</td>
+</tr>
+<tr>
+<td>Rules</td>
+<td>约定「做什么、不做什么」，如保证 AI 遵循项目结构，规范约束，代码风格</td>
+</tr>
+<tr>
+<td>Skills</td>
+<td>约定「怎么做」，渐进披露按需指导 AI 怎么做，如怎么写UI，怎么验收UI</td>
+</tr>
+</tbody></table>
+<p><strong>Rules 管「怎么才算对」，Skills 管「怎么一步步做」，MCP 让 Agent 能看到真实世界，而 SDD 负责记录「这次为什么要改、应该改成什么样」并把每次变更沉淀成新的真相</strong>，四者合在一起，才是真正稳定可演进的 AI Coding 底座。</p>
+<p>从需求到归档的完整链路如下：</p>
+<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
+  flowchart LR
+A[需求输入] --&gt; B{有设计稿?}
+B --&gt;|是| C[设计稿 MCP 读稿]
+C --&gt; D[design-analysis 产出 UI 分析清单]
+B --&gt;|否| E[create-proposal + SDD]
+D --&gt; E
+E --&gt; F[proposal &#x2F; tasks &#x2F; spec 增量 校验]
+F --&gt; G[按 tasks 实施]
+G --&gt; H[Rules + create-route&#x2F;component&#x2F;theme 页面开发]
+H --&gt; I{有实现页?}
+I --&gt;|是| J[Browser MCP 打开页面]
+J --&gt; K[ui-verification 比对设计稿&#x2F;清单]
+K --&gt; L[产出 UI 问题清单 修复再验]
+L --&gt; M[create-api&#x2F;store + 接口&#x2F;Context7 业务联调]
+G --&gt; M
+M --&gt; N[SDD 归档 更新 specs]
+  </pre></div>
+
+<ol>
+<li><strong>需求输入</strong>：明确是否有设计稿、是否有接口、交付形态（页面&#x2F;组件&#x2F;其它）。</li>
+<li><strong>设计稿分析</strong>（有稿时）：用 Pencil（或 Figma）MCP 读稿 → 执行 design-analysis 技能 → 产出 UI 分析清单。</li>
+<li><strong>创建提案</strong>：执行 create-proposal，产出 SDD 的 proposal、tasks、spec 增量；若有设计稿，在 tasks 中写明依据 UI 分析清单实现、实现后用 ui-verification 验收；validate 通过后进入实施。</li>
+<li><strong>页面&#x2F;UI 开发</strong>：按 tasks 顺序做；读 Rules（项目结构、组件、路由、样式等）+ Skills（create-route、create-component、theme-variables）；依据 UI 分析清单还原布局与样式。</li>
+<li><strong>UI 验收</strong>：用 Cursor IDE Browser（或 Playwright）打开实现页，执行 ui-verification，与设计稿或分析清单比对，按 P0&#x2F;P1&#x2F;P2 产出问题清单；修复后再次用 Browser 验证。</li>
+<li><strong>业务开发与联调</strong>：Rules（API、状态、通用约束）+ create-api、create-store；接口文档 MCP、Context7 按需使用。</li>
+<li><strong>归档</strong>：tasks 全部勾选后执行 SDD archive，更新 specs，变更挪入 archive。</li>
+</ol>
+<hr>
+<h2 id="主流-Agent-通用"><a href="#主流-Agent-通用" class="headerlink" title="主流 Agent 通用"></a>主流 Agent 通用</h2><p>本套架构方案，适用所有支持 skills&#x2F;mcp 的 Agent，且<strong>只维护一份，所有 Agent 共用</strong>：</p>
+<p>首先在项目根目录创建 <strong><code>.agents</code><strong>，仅在这里维护 <code>rules</code> 和 <code>skills</code>。然后通过 <code>scripts/sync-rules.js</code> 做</strong>脚本分发同步</strong>，而不是软链接：</p>
+<ul>
+<li><strong>唯一事实来源（Single Source of Truth）</strong>：所有规范只在 <code>.agents</code> 修改。</li>
+<li><strong>物理同步分发</strong>：脚本将 <code>.agents</code> 内容同步到各 IDE 目录（如 <code>.cursor</code>、<code>.claude</code>、<code>.trae</code>、<code>.windsurf</code>），避免软链接在 Git&#x2F;Windows 场景下不稳定的问题。</li>
+<li><strong>自动触发 + 手动触发</strong>：<code>npm install</code> 可通过 <code>postinstall</code> 自动执行同步；规则更新后也可手动执行 <code>node scripts/sync-rules.js</code>。</li>
+<li><strong>按 IDE 差异化适配</strong>：例如 Cursor 同步后规则后缀转换为 <code>.mdc</code>，Windsurf&#x2F;Trae 保持 <code>.md</code>，确保各工具“同一套规范、不同格式适配”。</li>
+</ul>
+<p>这样你只维护 <code>.agents</code> 一份，就能稳定支持多种 AI Coding IDE 的一致协作。</p>
+<p><strong>目录结构示例</strong>（仅展示与本文相关的部分）：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">项目根目录/</span><br><span class="line">├── .agents/                    # 🎯 核心规范目录 (唯一事实来源)</span><br><span class="line">│   ├── rules/                  # 基础规则配置 (Markdown/JSON)</span><br><span class="line">│   └── skills/                 # 特定任务技能配置 (Markdown)</span><br><span class="line">│</span><br><span class="line">├── scripts/                    # ⚙️ 自动化工具</span><br><span class="line">│   └── sync-rules.js           # 同步脚本：将 .agents 自动分发至各 IDE 目录</span><br><span class="line">│</span><br><span class="line">├── .cursor/                    # Cursor 配置目录（脚本自动分发，无需手动修改）</span><br><span class="line">├── .claude/                    # Claude 配置目录（同上）</span><br><span class="line">├── .trae/                      # Trae 配置目录（同上）</span><br><span class="line">└── .windsurf/                  # Windsurf 配置目录（同上）</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="SDD"><a href="#SDD" class="headerlink" title="SDD"></a>SDD</h2><p><strong>SDD 是什么</strong><br>Specification-Driven Development，用「规范&#x2F;spec」来驱动开发：</p>
+<ul>
+<li><strong>先写 spec 再写代码</strong>：任何需求或变更，先写清楚需求，「现在是怎样 → 期望变成怎样」，再开干；</li>
+<li><strong>变更可追踪</strong>：变更以「提案 + 任务 + spec 增量」管理，实施完归档，可回溯是谁、什么时候、为什么改了什么；</li>
+<li><strong>验收有据可依</strong>：验收按 spec 来，而不是「感觉差不多」。</li>
+</ul>
+<p><strong>SDD 的选择</strong></p>
+<p>Spec-kit 和 OpenSpec 是两个比较热门的 SDD 工具，我在尝试过两个工具后，最终选择使用 openspec 因为他比 speckit 简单很多，speckit 的流程更严谨，也更繁琐，其复杂度适合从 0 到 1 规划一个新项目。</p>
+<p><strong>OpenSpec</strong></p>
+<p>通过 <code>openspec init</code> 初始化项目后，你就会得到如下的一个典型的 OpenSpec 目录：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">openspec/</span><br><span class="line">├── project.md          # 项目约定与 AI 使用说明</span><br><span class="line">├── specs/              # 当前「真相」：已经生效的能力与约束</span><br><span class="line">└── changes/            # 进行中的变更：proposal、tasks、design、spec 增量</span><br><span class="line">    ├── &lt;change-id&gt;/</span><br><span class="line">    │   ├── proposal.md</span><br><span class="line">    │   ├── tasks.md</span><br><span class="line">    │   ├── design.md      # 可选：草图/交互/边界情况</span><br><span class="line">    │   └── spec-delta.md  # 本次变更对 specs 的增量</span><br><span class="line">    └── ...</span><br></pre></td></tr></table></figure>
+
+<p>首先你需要编写 <code>project.md</code>，将你项目的规范告诉 openspec，以此作为规范进行推动后续的工作，这是我项目的 <code>project.md</code>，起初也是一个庞大的文件，现在已经拆分到 rules 和 skills 了（后面会介绍）：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 项目上下文</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 项目概述</span></span><br><span class="line"></span><br><span class="line">当前项目是一个基于 React + TypeScript 的单页应用（SPA）。</span><br><span class="line"></span><br><span class="line"><span class="section">## 技能与规范</span></span><br><span class="line"></span><br><span class="line">本项目定义了两层指导体系，统一存放在 <span class="code">`.agents/`</span> 目录下。</span><br><span class="line"></span><br><span class="line"><span class="section">### `.agents/rules/` - 开发规范</span></span><br><span class="line"></span><br><span class="line">规范文件包含项目开发的核心规则，不会自动加载。当需要确认规范时，主动读取对应文件：</span><br><span class="line"></span><br><span class="line">| 文件             | 何时读取                   |</span><br><span class="line">| ---------------- | -------------------------- |</span><br><span class="line">| <span class="code">`01-项目概述.md`</span> | 需要了解项目背景、技术栈时 |</span><br><span class="line">| <span class="code">`02-编码规范.md`</span> | 编写或审查代码时           |</span><br><span class="line">| <span class="code">`03-项目结构.md`</span> | 确定代码应放在哪个目录时   |</span><br><span class="line">| <span class="code">`04-组件规范.md`</span> | 创建或拆分组件时           |</span><br><span class="line">| <span class="code">`05-API规范.md`</span>  | 新增或修改接口时           |</span><br><span class="line">| <span class="code">`06-路由规范.md`</span> | 新增页面或配置路由时       |</span><br><span class="line">| <span class="code">`07-状态管理.md`</span> | 新增或重构状态管理时       |</span><br><span class="line">| <span class="code">`08-通用约束.md`</span> | 确认通用约束时             |</span><br><span class="line">| <span class="code">`09-样式规范.md`</span> | 编写组件样式或主题适配时   |</span><br><span class="line">| <span class="code">`10-文档规范.md`</span> | 编写或审查代码注释时       |</span><br><span class="line">| <span class="code">`11-测试规范.md`</span> | 确认测试要求时             |</span><br><span class="line"></span><br><span class="line"><span class="section">### `.agents/skills/` - 实践技能</span></span><br><span class="line"></span><br><span class="line">技能文件包含具体落地步骤与示例代码，按需读取：</span><br><span class="line"></span><br><span class="line">| 场景              | 技能文件                                   |</span><br><span class="line">| ----------------- | ------------------------------------------ |</span><br><span class="line">| 创建提案时        | <span class="code">`.agents/skills/create-proposal/SKILL.md`</span>  |</span><br><span class="line">| 新增接口          | <span class="code">`.agents/skills/create-api/SKILL.md`</span>       |</span><br><span class="line">| 创建/拆分组件     | <span class="code">`.agents/skills/create-component/SKILL.md`</span> |</span><br><span class="line">| 新增页面路由      | <span class="code">`.agents/skills/create-route/SKILL.md`</span>     |</span><br><span class="line">| 新增全局状态      | <span class="code">`.agents/skills/create-store/SKILL.md`</span>     |</span><br><span class="line">| 编写样式/主题适配 | <span class="code">`.agents/skills/theme-variables/SKILL.md`</span>  |</span><br><span class="line"></span><br><span class="line">技能索引文件：<span class="code">`.agents/skills/README.md`</span></span><br></pre></td></tr></table></figure>
+
+<p>配置了规范后，就可以使用 openspec 的指令进行需求的实现，先是 <code>openspec proposal</code> 创建提案，Agent 会根据你的描述，生成详细的需求文档，规划开发任务，待你确认。</p>
+<p>开发任务确认后，再执行 <code>openspec apply</code> 开始实施任务，任务完成 <code>openspec archive</code> 对本次需求归档，这会作为后续新需求的一个参考，让 Agent 对项目的现状更了解。</p>
+<p><strong>OpenSpec 在这套架构里的作用</strong><br>结合前面讲的 Rules &#x2F; Skills &#x2F; MCP，这里的 OpenSpec 主要在三个环节发力：</p>
+<ul>
+<li><strong>需求 &#x2F; 变更收敛</strong>：不管输入来自 PRD、口头、IM 还是设计稿，先用 OpenSpec 写一条变更（proposal + tasks + spec 增量），把「要改什么、影响到哪里」说清楚，避免 AI 直接在代码上「盲改」；</li>
+<li><strong>开发执行对齐</strong>：开发时，Agent 读取对应变更的 proposal &#x2F; tasks &#x2F; spec 增量，再结合 Rules（项目级约束）、Skills（如 create-route &#x2F; create-api &#x2F; design-analysis）和 MCP（设计稿 &#x2F; 浏览器 &#x2F; 接口文档），按 tasks 一项项完成，实现过程始终围绕同一份 spec 展开；</li>
+<li><strong>验收与归档</strong>：UI 验收阶段，ui-verification 会同时参考 UI 分析清单（design-analysis 产物）和 OpenSpec 中的 spec 增量，验证是否满足这次变更的业务与交互预期；验收通过后，将变更移动到 archive，并把 spec 增量合到 specs，下次再改同一块能力时，所有上下文都在这里。</li>
+</ul>
+<hr>
+<h2 id="MCP"><a href="#MCP" class="headerlink" title="MCP"></a>MCP</h2><p><strong>MCP 是什么</strong>：Model Context Protocol，模型通用的上下文协议，让模型能安全、结构化地调用外部能力。设计稿、浏览器、接口文档等通过 MCP 暴露成工具，Agent 按需调用，拿到真实数据或执行真实操作。</p>
+<p>这套架构中用到如下的 MCP：</p>
+<table>
+<thead>
+<tr>
+<th>MCP</th>
+<th>用途</th>
+<th>环节</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pencil</td>
+<td>.pen 设计稿结构、布局、节点、截图</td>
+<td>设计稿分析</td>
+<td>设计稿分析首选，效果优于 Figma MCP</td>
+</tr>
+<tr>
+<td>Figma</td>
+<td>Figma 链接的截图与设计上下文</td>
+<td>设计稿分析（Figma 稿时）</td>
+<td>有 .pen 时优先 Pencil</td>
+</tr>
+<tr>
+<td>Cursor IDE Browser</td>
+<td>打开页面、快照、截图</td>
+<td>UI 验收</td>
+<td>Cursor 内优先，效果优于 Playwright</td>
+</tr>
+<tr>
+<td>Playwright</td>
+<td>页面打开、截图、自动化</td>
+<td>UI 验收（非 Cursor 或脚本化）</td>
+<td>可作为 Browser 的补充</td>
+</tr>
+<tr>
+<td>ApiFox</td>
+<td>OAS 等接口定义</td>
+<td>业务开发&#x2F;联调</td>
+<td>按当前文档生成&#x2F;校验请求</td>
+</tr>
+<tr>
+<td>Context7</td>
+<td>主流库最新文档与示例注入</td>
+<td>页面&#x2F;业务开发</td>
+<td>避免过时 API、幻觉</td>
+</tr>
+</tbody></table>
+<p><strong>设计稿类</strong></p>
+<ul>
+<li><strong>Pencil MCP</strong>：面向 <code>.pen</code> 设计稿。能读层级、节点、布局、截图（如 <code>snapshot_layout</code>、<code>get_screenshot</code>、<code>batch_get</code> 等），把设计稿里的元素尺寸、间距、字体、颜色直接触达 Agent。在「设计稿分析」环节作为主数据源，<strong>效果明显好于 Figma MCP</strong>——层级与细节更完整，分析清单更准，因此有 .pen 稿时优先用 Pencil。可以直接拷贝 Figma 粘贴到 Pencil 设计稿。</li>
+<li><strong>Figma MCP</strong>：面向 Figma 链接。可解析 file key &#x2F; node id、取截图与设计上下文，适合设计稿在 Figma 的场景，但 Figma 可复制到 Pencil ，95%+ 样式复制后还原，个别暂不支持的例如 Pencil 没有虚线边框。</li>
+</ul>
+<p><strong>浏览器类</strong></p>
+<ul>
+<li><strong>Cursor IDE Browser</strong>：在 Cursor 内打开目标页、拉快照、截图、简单交互。用于 UI 验收时「真实页面 vs 设计稿」比对。<strong>在 Cursor 里做 UI 验收时，优先用 Cursor IDE Browser，效果比 Playwright MCP 更好</strong>（集成度、稳定性、截图比对流程更顺）。</li>
+<li><strong>Playwright MCP</strong>：同样可打开页面、截图、操作，适合不在 Cursor 或需要脚本化验收时使用。</li>
+</ul>
+<p><strong>接口与文档类</strong></p>
+<ul>
+<li><strong>接口文档 MCP（如 ApiFox）</strong>：读&#x2F;刷新项目 OAS 等，在业务开发&#x2F;联调时按当前文档生成或校验请求与类型，避免接口变更后模型用旧假设。</li>
+<li><strong>Context7</strong>：按需注入当前版本的库文档与代码示例，在页面&#x2F;业务开发时减少依赖过时、模型幻觉 API 的问题。</li>
+</ul>
+<hr>
+<h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><p><strong>Rules 是什么</strong>：写在项目里的持久化指导，约定规范、约束和惯例（项目概述、编码、结构、组件、API、路由、状态、样式、文档、测试等），让 Agent 遵守「做什么、不做什么」。</p>
+<p><strong>实践中的演进历程</strong>：</p>
+<ul>
+<li>最初是一整个大 Rule.md，上下文过大、易丢记忆、难按场景聚焦；</li>
+<li>后来按模块拆成多份（如 01～11），按需读；</li>
+<li>Skills 加入后，Rules 只需要保留原则与约束，把步骤、检查点、模板、示例迁到 Skills，实现渐进式披露。</li>
+</ul>
+<p><strong>项目级 Rules 清单</strong>：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.agents/rules/</span><br><span class="line">├── 01-项目概述.md</span><br><span class="line">├── 02-编码规范.md</span><br><span class="line">├── 03-项目结构.md</span><br><span class="line">├── 04-组件规范.md</span><br><span class="line">├── 05-API规范.md</span><br><span class="line">├── 06-路由规范.md</span><br><span class="line">├── 07-状态管理.md</span><br><span class="line">├── 08-通用约束.md</span><br><span class="line">├── 09-样式规范.md</span><br><span class="line">├── 10-文档规范.md</span><br><span class="line">├── 11-测试规范.md</span><br><span class="line">└── README.md</span><br></pre></td></tr></table></figure>
+
+<p><strong>Rules 目录下的 README 清晰的介绍了各个 rule 的作用和使用时机</strong>：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 项目规范索引</span></span><br><span class="line"></span><br><span class="line">本目录包含前端项目的开发规范，按模块分类组织，便于快速查找。</span><br><span class="line"></span><br><span class="line"><span class="section">## 规范模块列表</span></span><br><span class="line"></span><br><span class="line"><span class="section">### 📋 [<span class="string">01-项目概述</span>](<span class="link">./01-项目概述.md</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 项目定位</span><br><span class="line"><span class="bullet">-</span> 技术栈</span><br><span class="line"></span><br><span class="line"><span class="section">### 💻 [<span class="string">02-编码规范</span>](<span class="link">./02-编码规范.md</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> TypeScript 规范</span><br><span class="line"><span class="bullet">-</span> 命名规范（文件夹、变量、常量、接口、组件等）</span><br><span class="line"><span class="bullet">-</span> 业务函数命名（事件处理、内部处理）</span><br><span class="line"></span><br><span class="line"><span class="section">### 📁 [<span class="string">03-项目结构</span>](<span class="link">./03-项目结构.md</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 目录结构概览</span><br><span class="line"><span class="bullet">-</span> 各目录使用约束（禁止新建非标准目录）</span><br><span class="line"></span><br><span class="line"><span class="section">### 🧩 [<span class="string">04-组件规范</span>](<span class="link">./04-组件规范.md</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 组件结构规范</span><br><span class="line"><span class="bullet">-</span> 组件层级规划（通用 vs 页面级）</span><br><span class="line"></span><br><span class="line"><span class="section">### 🌐 [<span class="string">05-API规范</span>](<span class="link">./05-API规范.md</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 接口请求规范</span><br><span class="line"><span class="bullet">-</span> 接口函数命名（NON-NEGOTIABLE）</span><br><span class="line"><span class="bullet">-</span> 接口错误处理（NON-NEGOTIABLE）</span><br><span class="line"></span><br><span class="line"><span class="section">### 🛣️ [<span class="string">06-路由规范</span>](<span class="link">./06-路由规范.md</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 路由结构规范</span><br><span class="line"><span class="bullet">-</span> 路由与菜单规范（NON-NEGOTIABLE）</span><br><span class="line"></span><br><span class="line"><span class="section">### 🗄️ [<span class="string">07-状态管理</span>](<span class="link">./07-状态管理.md</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> Zustand 使用规范</span><br><span class="line"><span class="bullet">-</span> Store 组织规范</span><br><span class="line"><span class="bullet">-</span> 持久化策略</span><br><span class="line"></span><br><span class="line"><span class="section">### ⚙️ [<span class="string">08-通用约束</span>](<span class="link">./08-通用约束.md</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 语言规范（中文注释）</span><br><span class="line"><span class="bullet">-</span> 可观测性与兜底</span><br><span class="line"><span class="bullet">-</span> 约束汇总</span><br><span class="line"></span><br><span class="line"><span class="section">### 🎨 [<span class="string">09-样式规范</span>](<span class="link">./09-样式规范.md</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> SCSS Modules 使用规范</span><br><span class="line"><span class="bullet">-</span> 主题色 CSS 变量（NON-NEGOTIABLE）</span><br><span class="line"></span><br><span class="line"><span class="section">### 📝 [<span class="string">10-文档规范</span>](<span class="link">./10-文档规范.md</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 注释规范</span><br><span class="line"><span class="bullet">-</span> JSDoc 使用</span><br><span class="line"></span><br><span class="line"><span class="section">### ✅ [<span class="string">11-测试规范</span>](<span class="link">./11-测试规范.md</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 测试覆盖要求</span><br><span class="line"><span class="bullet">-</span> 质量门禁</span><br><span class="line"></span><br><span class="line"><span class="section">## 使用说明</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 根据需要的规范类型，点击对应的模块链接查看详细内容</span><br><span class="line"><span class="bullet">2.</span> 所有规范文件都包含 <span class="code">`alwaysApply: true`</span> 标记，确保规范自动应用</span><br><span class="line"><span class="bullet">3.</span> 详细示例与落地步骤见 <span class="code">`.agents/skills/`</span> 目录下的技能文件</span><br><span class="line"></span><br><span class="line"><span class="section">## 快速查找</span></span><br><span class="line"></span><br><span class="line">| 需求                             | 规范文件    |</span><br><span class="line">| -------------------------------- | ----------- |</span><br><span class="line">| 项目背景是什么？使用哪些技术栈？ | 01-项目概述 |</span><br><span class="line">| 如何命名函数/变量？              | 02-编码规范 |</span><br><span class="line">| 代码放在哪个目录？               | 03-项目结构 |</span><br><span class="line">| 如何创建/拆分组件？              | 04-组件规范 |</span><br><span class="line">| 如何调用接口？                   | 05-API规范  |</span><br><span class="line">| 如何配置路由？                   | 06-路由规范 |</span><br><span class="line">| 如何使用 Zustand？               | 07-状态管理 |</span><br><span class="line">| 有哪些通用约束？                 | 08-通用约束 |</span><br><span class="line">| 如何使用主题变量？               | 09-样式规范 |</span><br><span class="line">| 如何写注释？                     | 10-文档规范 |</span><br><span class="line">| 有何测试要求？                   | 11-测试规范 |</span><br></pre></td></tr></table></figure>
+
+<p>更详细的 rules 落地示例见：<a href="https://wuxingxi.top/"><strong>《前端 AI Coding 落地指南（二）Rules 篇》</strong></a>。</p>
+<hr>
+<h2 id="Skills"><a href="#Skills" class="headerlink" title="Skills"></a>Skills</h2><p><strong>Skills 是什么</strong>：用 Markdown 写的技能文件，教会 Agent 完成某一类任务。一个技能一个目录，必有 <code>SKILL.md</code>（YAML 头 + 步骤 + 示例），可带子规则。</p>
+<p><strong>Skills 有什么用</strong>：按场景加载、渐进披露，例如在 Rules 划好边界的前提下给「怎么做」的步骤与示例拆分成 skills，避免大量 rules 导致上下文庞大，模型无法集中，出现幻觉和记忆丢失问题。</p>
+<p><strong>开源 Skills</strong>：</p>
+<p>有许多开源的优质 skills，直接安装到你的项目中大有裨益，在我的 React 项目中就用到了以下开源 skills</p>
+<table>
+<thead>
+<tr>
+<th>技能</th>
+<th>简介</th>
+<th>使用环节</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vercel-react-best-practices</td>
+<td>React 代码编写的最佳实践</td>
+<td>页面&#x2F;业务开发时按需引用</td>
+</tr>
+<tr>
+<td>vercel-composition-patterns</td>
+<td>复合组件、状态提升、避免 boolean props 等</td>
+<td>设计组件 API、组合与状态时</td>
+</tr>
+<tr>
+<td>web-design-guidelines</td>
+<td>通用 UI&#x2F;UX 设计指南</td>
+<td>UI 分析、实现时参考</td>
+</tr>
+<tr>
+<td>find-skills</td>
+<td>查找并选用可用技能</td>
+<td>需要发现技能时</td>
+</tr>
+<tr>
+<td>skill-creator</td>
+<td>创建新技能的结构与规范</td>
+<td>扩展能力、新增 Skills 时</td>
+</tr>
+</tbody></table>
+<p><strong>自封装 Skills</strong>：</p>
+<p>除了开源 skills，你还可以自己封装 skills，当有固定步骤流程且会反复做的任务时，就可以封装成 Skill。在我的项目中就有以下两类自封装的 skill：</p>
+<ol>
+<li><p>从 Rules「怎么做」拆出来的（create-route、create-component、create-api、create-store、theme-variables）；</p>
+</li>
+<li><p>可复用的流程，给予 Agent 指导（create-proposal、design-analysis、ui-verification）。</p>
+</li>
+</ol>
+<p>像 design-analysis、ui-verification 这种内容多的技能，还可以再把细分工具能力等拆到技能下的 rules 子目录里，充分发挥渐进披露的优势，SKILL 只做入口说明。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.agents/skills/</span><br><span class="line">├── create-proposal/     # 创建提案（SDD proposal、tasks、spec 增量）</span><br><span class="line">│   └── SKILL.md</span><br><span class="line">├── design-analysis/     # 设计稿分析 → UI 分析清单</span><br><span class="line">│   ├── SKILL.md</span><br><span class="line">│   └── rules/          # 分析顺序、四类重点、工作流、输出模板、工具等</span><br><span class="line">├── ui-verification/    # UI 验收 → 问题清单</span><br><span class="line">│   ├── SKILL.md</span><br><span class="line">│   └── rules/          # 比对维度、常见错误、工作流、工具等</span><br><span class="line">├── create-route/       # 新增路由、Page、Loader</span><br><span class="line">├── create-api/         # 新增接口、类型、请求封装</span><br><span class="line">├── create-store/       # 新增 Zustand store</span><br><span class="line">├── create-component/   # 新增/拆分组件</span><br><span class="line">├── theme-variables/    # 主题 CSS 变量使用</span><br><span class="line">└── README.md</span><br></pre></td></tr></table></figure>
+
+<p><strong>skills 在 AI Coding 过程中发挥的作用</strong>：</p>
+<ul>
+<li>创建 SDD 提案时同时使用 create-proposal；</li>
+<li>有设计稿时用 design-analysis 产出 UI 分析清单；</li>
+<li>页面&#x2F;UI 开发时用 create-route、create-component、theme-variables；</li>
+<li>实现完成后用 ui-verification 做还原验收；</li>
+<li>业务开发&#x2F;联调时用 create-api、create-store。</li>
+<li>其他开源第三方 skills 在写代码、做架构决策时按需引用。</li>
+</ul>
+<p><strong>skills 目录下的 README</strong>：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">name: project-skills-index</span><br><span class="line"><span class="section">description: 项目的技能索引，帮助 Agent 在具体开发场景下选择合适的技能文件。</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 项目技能索引</span></span><br><span class="line"></span><br><span class="line">项目在 <span class="code">`.agents/skills`</span> 下定义了一些与 RULE 配套的技能，用于承载<span class="strong">**具体实践步骤与示例代码**</span>，避免在 RULE 中塞入过多细节。</span><br><span class="line"></span><br><span class="line"><span class="section">## 当前技能列表</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="code">`create-api`</span>：创建与维护 HTTP 接口（配合 <span class="code">`05-API规范`</span> 使用）</span><br><span class="line"><span class="bullet">-</span> <span class="code">`create-component`</span>：创建与拆分通用组件/页面级组件（配合 <span class="code">`03/04`</span> 使用）</span><br><span class="line"><span class="bullet">-</span> <span class="code">`create-route`</span>：创建与维护路由目录与 Loader/Page（配合 <span class="code">`06-路由规范`</span> 使用）</span><br><span class="line"><span class="bullet">-</span> <span class="code">`create-store`</span>：使用 Zustand 创建与维护全局状态（配合 <span class="code">`07-状态管理`</span> 使用）</span><br><span class="line"><span class="bullet">-</span> <span class="code">`theme-variables`</span>：正确使用 Antd 与自定义主题 CSS 变量（配合 <span class="code">`09-样式规范`</span> 使用）</span><br><span class="line"></span><br><span class="line">后续如有新的实践场景（例如：测试用例编写、文档撰写模板等），也建议以新的技能目录形式补充到本目录中。</span><br></pre></td></tr></table></figure>
+
+<p>更详细的 Skills 落地示例见：<a href="https://wuxingxi.top/"><strong>《前端 AI Coding 落地指南（三）Skills 篇》</strong></a>。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>当下的局限性</strong>：要高接纳率、少返工，需要较好的模型与算力；在无限额度、高配模型下稳定性才有保障，成本不低。配合 git worktree + 多 Agent 多任务并行，不计成本时接近 100% AI Coding 在技术上可行，成本和流程需按团队权衡。</p>
+<p><strong>AI Coding 展望</strong>：模型会更聪明，上下文管理会更智能，交互会更简洁。在这套 MCP + Rules + Skills + SDD 的底座上，只靠 AI Coding 完成日常前端开发不会太远；先跑通「需求 → 提案 → 分析 → 开发 → 验收」闭环，再逐步扩展，接纳率和效率都会有可见提升。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wuxingxi.top">吴星喜</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wuxingxi.top/2026/02/06/%E5%89%8D%E7%AB%AF%20AI%20Coding%20%E8%90%BD%E5%9C%B0%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89%E6%9E%B6%E6%9E%84%E7%AF%87/">https://wuxingxi.top/2026/02/06/%E5%89%8D%E7%AB%AF%20AI%20Coding%20%E8%90%BD%E5%9C%B0%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89%E6%9E%B6%E6%9E%84%E7%AF%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wuxingxi.top" target="_blank">吴星喜的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF-AI%E7%BC%96%E7%A8%8B/">前端 AI编程</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/wuxingxi888/CDN_IMG_BED/AI_coding_1.webp" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/12/28/%E7%94%A8%E4%B8%80%E6%9D%A1%E5%93%A8%E5%85%B5%E7%BA%BF%E4%BC%98%E9%9B%85%E5%AE%9E%E7%8E%B0UniApp-Vue3%E7%9A%84Tab%E5%90%B8%E9%A1%B6/" title="用一条哨兵线优雅实现 UniApp/Vue3 的 Tab 吸顶（告别 scroll 监听）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/wuxingxi888/CDN_IMG_BED/uniapp_banner.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">用一条哨兵线优雅实现 UniApp/Vue3 的 Tab 吸顶（告别 scroll 监听）</div></div></a></div><div class="next-post pull-right"><a href="/2026/03/12/OpenSpec-%E8%A7%84%E6%A0%BC%E9%A9%B1%E5%8A%A8AI%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E6%8C%87%E5%8D%97/" title="OpenSpec：把“凭感觉写代码”变成“按规格交付”（Spec Coding 实战指南）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/wuxingxi888/CDN_IMG_BED/vibe_coding.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">OpenSpec：把“凭感觉写代码”变成“按规格交付”（Spec Coding 实战指南）</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">架构简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%B5%81-Agent-%E9%80%9A%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">主流 Agent 通用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SDD"><span class="toc-number">3.</span> <span class="toc-text">SDD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MCP"><span class="toc-number">4.</span> <span class="toc-text">MCP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rules"><span class="toc-number">5.</span> <span class="toc-text">Rules</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Skills"><span class="toc-number">6.</span> <span class="toc-text">Skills</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By 吴星喜</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://github.com/wuxingxi888/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : ''
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><div class="aplayer no-destroy" data-id="458093163" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-lrctype="0" data-preload="none" data-autoplay="false" muted></div><script src="/live2d-widget/autoload.js"></script><script src="/js/check-update.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(() => {
+  window.$crisp = [];
+  window.CRISP_WEBSITE_ID = "57a788e8-59fc-4ef7-a7f5-aaecd77ff2ec";
+  (function () {
+    d = document;
+    s = d.createElement("script");
+    s.src = "https://client.crisp.chat/l.js";
+    s.async = 1;
+    d.getElementsByTagName("head")[0].appendChild(s);
+  })();
+  $crisp.push(["safe", true])
+
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    const open = () => {
+      $crisp.push(["do", "chat:show"])
+      $crisp.push(["do", "chat:open"])
+    }
+
+    const close = () => {
+      $crisp.push(["do", "chat:hide"])
+    }
+
+    close()
+    $crisp.push(["on", "chat:closed", function() {
+      close()
+    }])
+
+    window.chatBtnFn = () => {
+      $crisp.is("chat:visible") ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        $crisp.push(["do", "chat:hide"])
+      },
+      show: () => {
+        $crisp.push(["do", "chat:show"])
+      }
+    }
+  }
+})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
