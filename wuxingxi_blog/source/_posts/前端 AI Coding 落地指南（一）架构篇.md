@@ -344,7 +344,7 @@ openspec/
 | 有何测试要求？                   | 11-测试规范 |
 ```
 
-更详细的 rules 落地示例见：[**《前端 AI Coding 落地指南（二）Rules 篇》**](https://wuxingxi.top)。
+更详细的 rules 落地示例见：[**《前端 AI Coding 落地指南（二）Rules 篇》**](https://wuxingxi.top/2026/02/07/%E5%89%8D%E7%AB%AF%20AI%20Coding%20%E8%90%BD%E5%9C%B0%E6%8C%87%E5%8D%97%EF%BC%88%E4%BA%8C%EF%BC%89Rules%E7%AF%87/)。
 
 ---
 
@@ -426,7 +426,7 @@ description: 项目的技能索引，帮助 Agent 在具体开发场景下选择
 后续如有新的实践场景（例如：测试用例编写、文档撰写模板等），也建议以新的技能目录形式补充到本目录中。
 ```
 
-更详细的 Skills 落地示例见：[**《前端 AI Coding 落地指南（三）Skills 篇》**](https://wuxingxi.top)。
+更详细的 Skills 落地示例见：[**《前端 AI Coding 落地指南（三）Skills 篇》**](https://wuxingxi.top/2026/02/08/%E5%89%8D%E7%AB%AF%20AI%20Coding%20%E8%90%BD%E5%9C%B0%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%89%EF%BC%89Skills%E7%AF%87/)。
 
 ---
 
